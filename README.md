@@ -1,3 +1,4 @@
+
 # balcazar-pazmino-cesar-andresPC M
 
 
@@ -10,3 +11,8 @@ Cambio 3
 Paquita 1 
 
 Tangente
+
+Paquita 1
+
+restar la cotangente hiperbolica
+
