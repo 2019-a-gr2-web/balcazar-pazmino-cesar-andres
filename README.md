@@ -7,4 +7,6 @@ Cambio 2
 
 Cambio 3
 
-Paquita 1 
+Paquita 1
+
+restar la cotangente hiperbolica
