@@ -1,0 +1,12 @@
+{
+  "llave":"valor",
+  "nombre":"Cesar",
+  "edad":23,
+  "sueldo":30.5,
+  "booleano":false,
+  "nulo":null,
+  "String":"nada",
+  "mascotas":["String",23,23.4,null,false,{"nombre":"cachetes"}]
+
+
+}
