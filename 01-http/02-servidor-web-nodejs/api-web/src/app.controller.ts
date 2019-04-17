@@ -1,4 +1,4 @@
-import {Controller, Get, Post, HttpCode, Put, Delete, Headers} from '@nestjs/common';
+import {Controller, Get, Post, HttpCode, Put, Delete, Headers, Query} from '@nestjs/common';
 import { AppService } from './app.service';
 
 //http:ip:puerto/segmentoInicial/segmentoInicial
@@ -64,6 +64,13 @@ export class AppController {
       }
 
 
+      //parametros de clave y valor (le indicamos cómo va mandar los datos el cliente)
+      //?llave=valor&llave2=valor2
+
+
+
+
+
 
   }
 
@@ -93,6 +100,16 @@ export class AppController {
     //usar let en lugar de var
   //para variables usar const (variable constante)
 
+
+    @Get('/consuñta')
+    consultar(@Query() queryParams){
+        console.log(queryParams)
+        if(queryParams.nombre){
+            return 'hola '+nombre
+        }else{
+
+        }
+    }
 
 }
 
