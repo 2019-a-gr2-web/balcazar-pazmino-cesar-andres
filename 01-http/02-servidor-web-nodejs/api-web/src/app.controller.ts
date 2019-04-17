@@ -63,55 +63,32 @@ export class AppController {
         return ':('
       }
 
-
-      //parametros de clave y valor (le indicamos cómo va mandar los datos el cliente)
-      //?llave=valor&llave2=valor2
-
-
-
-
-
-
   }
 
-    //JSON es la notacion de objetos en JS, un archivo json no puede estar vacio, es usado porque es ligero y facil de entender
-  //abosultamente todas las llaves deben estar entre comillas DOBLES, estandar JSON (Java Script Object Notation)
-  //todos los string en JSON tienen comillas dobles
-  //en los archivos JSON no existen undefined
-  //un archivo JSON soporta objetos JSON y arreglos JSON
-    /**
-     *
-     *
-     *
-     *
-     *
-     */
+    //parametros de clave y valor (le indicamos cómo va mandar los datos el cliente)
+    //?llave=valor&llave2=valor2
 
-
-
-    /*var nombre:string='Cesar' //String
-         var edad:number=20 //number
-         var sueldo=120.50 //number
-         var casado=false//boolean
-         var hijos=null//null
-         var alas=undefined//undefined*/
-
-
-    //usar let en lugar de var
-  //para variables usar const (variable constante)
-
-
-    @Get('/consuñta')
+    //parametro de query
+    //en el postman poner : localhost:3000/api/consultar?nombre=loquesea (&)
+    //los parametros de consulta clave y valor se reciben como un JSON.
+    @Get('/consulta')
     consultar(@Query() queryParams){
         console.log(queryParams)
         if(queryParams.nombre){
-            return 'hola '+nombre
+            return 'hola '+ queryParams.nombre
         }else{
-
+            return 'hola extranio'
         }
     }
+    //cabeceras sirven para seguridad y comunicacion entre c/s
+
+    
+
 
 }
+
+
+
 
 let objeto:any = {
     propiedad : 'valor'
@@ -168,4 +145,32 @@ class clase{
     @metodoC //und decorador es una función que se ejecuta antes de algo(clases,parametros,metodoso,atributos)
   protected metodoprotected(){}
 }*/
+
+
+
+//JSON es la notacion de objetos en JS, un archivo json no puede estar vacio, es usado porque es ligero y facil de entender
+//abosultamente todas las llaves deben estar entre comillas DOBLES, estandar JSON (Java Script Object Notation)
+//todos los string en JSON tienen comillas dobles
+//en los archivos JSON no existen undefined
+//un archivo JSON soporta objetos JSON y arreglos JSON
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+
+
+
+/*var nombre:string='Cesar' //String
+     var edad:number=20 //number
+     var sueldo=120.50 //number
+     var casado=false//boolean
+     var hijos=null//null
+     var alas=undefined//undefined*/
+
+
+//usar let en lugar de var
+//para variables usar const (variable constante)
 
