@@ -1,4 +1,4 @@
-import {Controller, Get, Post, HttpCode, Put, Delete, Headers, Query} from '@nestjs/common';
+import {Controller, Get, Post, HttpCode, Put, Delete, Headers, Query, Param, Body, Request,Response} from '@nestjs/common';
 import { AppService } from './app.service';
 
 //http:ip:puerto/segmentoInicial/segmentoInicial
@@ -8,107 +8,182 @@ import { AppService } from './app.service';
 
 @Controller('/api')
 export class AppController {
-  constructor(private readonly appService: AppService) { }
+    constructor(private readonly appService: AppService) {
+    }
 
- /* @Get('/helloWorld')
-  getHello(): string {
-    return this.appService.getHello();
-  }*/
-  //cuando se hace cambio en la logica del servidor se debe reiniciar el servidor
-  //para ello se puede usar npm run start:dev
+    /* @Get('/helloWorld')
+     getHello(): string {
+       return this.appService.getHello();
+     }*/
+    //cuando se hace cambio en la logica del servidor se debe reiniciar el servidor
+    //para ello se puede usar npm run start:dev
 
- /* @Post()//alt+enter para importar arriba directamente
-  @HttpCode(205)
-  postHello() {
-    return 'Hola mundo en post';
-  }*/
+    /* @Post()//alt+enter para importar arriba directamente
+     @HttpCode(205)
+     postHello() {
+       return 'Hola mundo en post';
+     }*/
 
-  /*Segmento inicial*/
+    /*Segmento inicial*/
 //segmento a: GET: 'hello-world
-  //segmento a: POST: 'HOLA-MUNDO'
-  // put , delete
+    //segmento a: POST: 'HOLA-MUNDO'
+    // put , delete
 
-  @Get('/hola-mundo')
-  holaMundo(){
-    return 'Hola mundo';
-  }
+    @Get('/hola-mundo')
+    holaMundo() {
+        return 'Hola mundo';
+    }
 
-  @Post('/hello-world')
-  helloWorld(){
-    return 'Hello world';
-  }
-  @Put('/salut-monde')
-  putBonJour(){
-    return 'salut-monde';
-  }
+    @Post('/hello-world')
+    helloWorld() {
+        return 'Hello world';
+    }
 
-  @Delete('/ola-mundo')
-  olaMundo(){
-    return 'ola mundo';
-  }
+    @Put('/salut-monde')
+    putBonJour() {
+        return 'salut-monde';
+    }
+
+    @Delete('/ola-mundo')
+    olaMundo() {
+        return 'ola mundo';
+    }
 
 //un decorador es la ejecucion de una funcion
-  @Get('/adivina')
-  adivina(@Headers() headers){ // parametro de un metodo de una clase, la clase headers usar la cabecera de nestjs, verificar si está importado, con esto tengo acceso a las cabeceras
-   //estoy usando el decorador @Headers para el parametro headers
+    @Get('/adivina')
+    adivina(@Headers() headers) { // parametro de un metodo de una clase, la clase headers usar la cabecera de nestjs, verificar si está importado, con esto tengo acceso a las cabeceras
+        //estoy usando el decorador @Headers para el parametro headers
 
-    const numeroRandom=Math.round(Math.random()*10)
-    //return numeroRandom;// en javascrip no existen enteros, son numeros y ya
-      console.log('Headers: ',headers);
-     // return headers.alv
-      const numeroCabecer=Number(headers.numero)
-      if(numeroCabecer ==numeroRandom ){
-        return 'ok'
-      }else{
-        return ':('
-      }
+        const numeroRandom = Math.round(Math.random() * 10)
+        //return numeroRandom;// en javascrip no existen enteros, son numeros y ya
+        console.log('Headers: ', headers);
+        // return headers.alv
+        const numeroCabecer = Number(headers.numero)
+        if (numeroCabecer == numeroRandom) {
+            return 'ok'
+        } else {
+            return ':('
+        }
 
-  }
+    }
+
 
     //parametros de clave y valor (le indicamos cómo va mandar los datos el cliente)
     //?llave=valor&llave2=valor2
 
     //parametro de query
     //en el postman poner : localhost:3000/api/consultar?nombre=loquesea (&)
-    //los parametros de consulta clave y valor se reciben como un JSON.
+    //los parametros de consulta clave y valor se reciben como un objeto JS
     @Get('/consulta')
-    consultar(@Query() queryParams){
+    consultar(@Query() queryParams) {
         console.log(queryParams)
-        if(queryParams.nombre){
-            return 'hola '+ queryParams.nombre
-        }else{
+        if (queryParams.nombre) {
+            return 'hola ' + queryParams.nombre
+        } else {
             return 'hola extranio'
         }
     }
+
     //cabeceras sirven para seguridad y comunicacion entre c/s
 
-    
 
+    //parametros de RUTA
+    //@Params
+    @Get('/ciudad/:idCiudad/:canton')
+    ciudad(@Param() parametrosRuta) {
+        switch (parametrosRuta.idCiudad.toLowerCase()) {
+            case 'quito':
+                return 'Que fuef'
+            case 'guayaquil':
+                return 'Pasa el celular'
+
+            default:
+                return 'buenas tardes'
+        }
+    }
+
+
+    //PARAMETROS DE CUERPO
+    //el metodo get no recibe parametros de cuerpo
+    //solo para cierto tipos de parametros de cuerpo
+    @Post('registrocomida')
+    registroComida(@Body() parametrosCuerpo/*, @Request() request*/, @Response() response) { //si utiliza response ya no puedo usar return, ahora el programador debe verificar como enviar la respuesta, buscar en expressjs response
+
+        /* console.log(parametrosCuerpo)
+
+
+         console.log(request.body)*/
+
+
+        if (parametrosCuerpo.nombre && parametrosCuerpo.cantidad) {
+            const cantidad = Number(parametrosCuerpo.cantidad);
+            if (cantidad > 1) {
+                response.set('Premio', 'Guatita');
+                return response.send({mensaje: 'Registro Creado'});
+
+                // return 'Registro actualizado';
+            } else {
+
+                return response.status(400).send(
+                    {
+                        mensaje: 'Error',
+                        error: 400
+                    }); //porque seria un error del cliente enviar mal
+                //return 'Error, no envia nombre o cantidad';
+            }
+
+
+        }
+    }
+
+
+    @Get('/semilla')
+    semilla(@Request() res){
+        console.log(res.cookies);
+       //return 'ok'
+
+        //para usar cookies usar : #npm install cookie-parser
+
+        //luego usar cookie parser en el main.ts
+
+        //const noHayCookie=!res.cookies;
+        const cookies=res.cookies;
+        if(cookies.micookie){
+            return ':D'
+        }else{
+            return ':('
+        }
+    }
 
 }
 
 
 
 
+
+
+
+/*
 let objeto:any = {
     propiedad : 'valor'
-};
+};*/
+/*
 objeto.propiedad
 //*******aniadir propiedad a un objeto
 //1era forma
 objeto.propiedad2='valor2';//debo definir el objeto como any 1ero
 //2da forma
-objeto['propiedad3']='valor3'
-
+objeto['propiedad3']='valor3'*/
+/*
 //*******eliminar propiedad
 //peligrosa
 delete objeto.propiedad3;
 
 //segura
-objeto.propiedad3=undefined;
+objeto.propiedad3=undefined;*/
 
 
-
+/*
 const json=[
     {
     "llave":"valor",
@@ -121,7 +196,7 @@ const json=[
     "mascotas":["String",23,23.4,null,false,{"nombre":"cachetes"}]
 
 }
-];
+];*/
 
 
 
