@@ -5,7 +5,7 @@ var cookieParser= require('cookie-parser') //forma de importar en JS
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.use(cookieParser());
+  app.use(cookieParser('Secreto'));
   await app.listen(3003);
 }
 bootstrap();
