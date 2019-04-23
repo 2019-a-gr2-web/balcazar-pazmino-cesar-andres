@@ -1,9 +1,14 @@
 import {Controller, Get, Post, HttpCode, Put, Delete, Headers, Query, Param, Body, Request,Response} from '@nestjs/common';
 import { AppService } from './app.service';
-
+//modo javascript
+import * as Joi from '@hapi/joi';
+//modo typescript
+//const Joi = require('@hapi/joi');
 //http:ip:puerto/segmentoInicial/segmentoInicial
 //@Controller(Segemento)
 //el segmento Accion se pone en cada método
+
+
 
 
 @Controller('/api')
@@ -138,7 +143,7 @@ export class AppController {
 
 
     @Get('/semilla')
-    semilla(@Request() res){
+    semilla(@Request() res, /*esta cookie en cambio es para la cooki que se envia desde el servidor*/@Response() response){
         console.log(res.cookies);
        //return 'ok'
 
@@ -147,9 +152,49 @@ export class AppController {
         //luego usar cookie parser en el main.ts
 
         //const noHayCookie=!res.cookies;
-        const cookies=res.cookies;
+        const cookies=res.cookies; //devuelve un JSON
+
+        //primero se crea un esquema de validacion
+        //SOLO SE PUEDE VALIDAR OBJETOS JSON
+        //es decir por cada tipo de validacion crear un esquema, un esuquema por formulario: cuando se cree, cuando se actualice, cuando se borre
+        const  esquemaValidacionNumero=Joi.object().keys(
+            {
+                numero:Joi.number().integer().required()
+            }
+
+        );
+        //1er parametro objeto a validar, 2do esquema de validacion
+        const resultado=Joi.validate({//JSON a validar
+            numero:cookies.numero
+        },esquemaValidacionNumero);
+
+        if(resultado.error){
+            console.log('resultado: ',resultado)
+        }else{
+            console.log('Numero valido')
+        }
+
+
+        //request.cookies//cookies no seguras
+//request.signedCookies//cookies seguras
+
+
         if(cookies.micookie){
-            return ':D'
+            //esta cookie que voy hacer abajito se manda desde el servidor, las que se mandaban desde la pagina web eran del cliente
+            const horaFechaServidor=new Date();
+            const minutos=horaFechaServidor.getMinutes();
+            horaFechaServidor.setMinutes(minutos+1);
+
+
+            response.cookie(
+                'Fecha servidor', //nombre (key)
+                new Date().getTime(),//valor(value)
+                {//opciones
+                    expires:horaFechaServidor // una aplicacion de esto, es las sesiones, que expirarian en x tiempo
+                }
+            )
+            //dos tipos de cookies: seguras e inseguras
+            return response.set('Ok')
         }else{
             return ':('
         }
