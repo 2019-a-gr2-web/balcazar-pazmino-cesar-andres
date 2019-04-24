@@ -1,4 +1,4 @@
-import {Controller, Get, Post, HttpCode, Put, Delete, Headers, Query, Param, Body, Request,Response} from '@nestjs/common';
+import { Controller, Get, Post, HttpCode, Put, Delete, Headers, Query, Param, Body, Request, Response } from '@nestjs/common';
 import { AppService } from './app.service';
 //modo javascript
 import * as Joi from '@hapi/joi';
@@ -30,7 +30,7 @@ export class AppController {
      }*/
 
     /*Segmento inicial*/
-//segmento a: GET: 'hello-world
+    //segmento a: GET: 'hello-world
     //segmento a: POST: 'HOLA-MUNDO'
     // put , delete
 
@@ -54,7 +54,7 @@ export class AppController {
         return 'ola mundo';
     }
 
-//un decorador es la ejecucion de una funcion
+    //un decorador es la ejecucion de una funcion
     @Get('/adivina')
     adivina(@Headers() headers) { // parametro de un metodo de una clase, la clase headers usar la cabecera de nestjs, verificar si está importado, con esto tengo acceso a las cabeceras
         //estoy usando el decorador @Headers para el parametro headers
@@ -124,7 +124,7 @@ export class AppController {
             const cantidad = Number(parametrosCuerpo.cantidad);
             if (cantidad > 1) {
                 response.set('Premio', 'Guatita');
-                return response.send({mensaje: 'Registro Creado'});
+                return response.send({ mensaje: 'Registro Creado' });
 
                 // return 'Registro actualizado';
             } else {
@@ -143,59 +143,59 @@ export class AppController {
 
 
     @Get('/semilla')
-    semilla(@Request() res, /*esta cookie en cambio es para la cooki que se envia desde el servidor*/@Response() response){
+    semilla(@Request() res, /*esta cookie en cambio es para la cooki que se envia desde el servidor*/@Response() response) {
         console.log(res.cookies);
-       //return 'ok'
+        //return 'ok'
 
         //para usar cookies usar : #npm install cookie-parser
 
         //luego usar cookie parser en el main.ts
 
         //const noHayCookie=!res.cookies;
-        const cookies=res.cookies; //devuelve un JSON
+        const cookies = res.cookies; //devuelve un JSON
 
         //primero se crea un esquema de validacion
         //SOLO SE PUEDE VALIDAR OBJETOS JSON
         //es decir por cada tipo de validacion crear un esquema, un esuquema por formulario: cuando se cree, cuando se actualice, cuando se borre
-        const  esquemaValidacionNumero=Joi.object().keys(
+        const esquemaValidacionNumero = Joi.object().keys(
             {
-                numero:Joi.number().integer().required()
+                numero: Joi.number().integer().required()
             }
 
         );
         //1er parametro objeto a validar, 2do esquema de validacion
-        const resultado=Joi.validate({//JSON a validar
-            numero:cookies.numero
-        },esquemaValidacionNumero);
+        const resultado = Joi.validate({//JSON a validar
+            numero: cookies.numero
+        }, esquemaValidacionNumero);
 
-        if(resultado.error){
-            console.log('resultado: ',resultado)
-        }else{
+        if (resultado.error) {
+            console.log('resultado: ', resultado)
+        } else {
             console.log('Numero valido')
         }
 
 
         //request.cookies//cookies no seguras
-//request.signedCookies//cookies seguras
+        //request.signedCookies//cookies seguras
 
 
-        if(cookies.micookie){
+        if (cookies.micookie) {
             //esta cookie que voy hacer abajito se manda desde el servidor, las que se mandaban desde la pagina web eran del cliente
-            const horaFechaServidor=new Date();
-            const minutos=horaFechaServidor.getMinutes();
-            horaFechaServidor.setMinutes(minutos+1);
+            const horaFechaServidor = new Date();
+            const minutos = horaFechaServidor.getMinutes();
+            horaFechaServidor.setMinutes(minutos + 1);
 
 
             response.cookie(
                 'Fecha servidor', //nombre (key)
                 new Date().getTime(),//valor(value)
                 {//opciones
-                    expires:horaFechaServidor // una aplicacion de esto, es las sesiones, que expirarian en x tiempo
+                    expires: horaFechaServidor // una aplicacion de esto, es las sesiones, que expirarian en x tiempo
                 }
             )
             //dos tipos de cookies: seguras e inseguras
             return response.set('Ok')
-        }else{
+        } else {
             return ':('
         }
     }
@@ -228,9 +228,9 @@ export class AppController {
         }
 
         const cookieSegura = request.signedCookies.fechaServidor;
-        if(cookieSegura){
+        if (cookieSegura) {
             console.log('Cookie segura', cookieSegura);
-        }else{
+        } else {
             console.log('No es valida esta cookie');
         }
 
@@ -259,19 +259,29 @@ export class AppController {
 
     //Cookie insegura retornando un JSON
     @Get('/setearNombre')
-        deber(@Response() res){
+    deber(@Request() req, @Response() res) {
+
+        const galleta = req.cookies;
+
+        if (galleta.nombre) {
             res.cookie(
 
-                'nombreUsuario',  'César'
+                'nombreUsuario', galleta.nombre
 
             );
-            return res.send(
-                {
-                    nombreUsuario:'César',
+        } else {
+            return "error";
+        }
 
-                    resultado: 2
-                }
-            )
+
+
+        return res.send(
+            {
+                nombreUsuario: galleta.nombre,
+
+                resultado: 2
+            }
+        )
 
     }
 
