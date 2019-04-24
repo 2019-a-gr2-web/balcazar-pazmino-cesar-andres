@@ -142,9 +142,9 @@ export class AppController {
     }
 
 
-    @Get('/semilla')
-    semilla(@Request() res, /*esta cookie en cambio es para la cooki que se envia desde el servidor*/@Response() response) {
-        console.log(res.cookies);
+  //  @Get('/semilla')
+    //semilla(@Request() res, /*esta cookie en cambio es para la cooki que se envia desde el servidor*/@Response() response) {
+    //    console.log(res.cookies);
         //return 'ok'
 
         //para usar cookies usar : #npm install cookie-parser
@@ -152,53 +152,52 @@ export class AppController {
         //luego usar cookie parser en el main.ts
 
         //const noHayCookie=!res.cookies;
-        const cookies = res.cookies; //devuelve un JSON
+      //  const cookies = res.cookies; //devuelve un JSON
 
         //primero se crea un esquema de validacion
         //SOLO SE PUEDE VALIDAR OBJETOS JSON
         //es decir por cada tipo de validacion crear un esquema, un esuquema por formulario: cuando se cree, cuando se actualice, cuando se borre
-        const esquemaValidacionNumero = Joi.object().keys(
-            {
-                numero: Joi.number().integer().required()
-            }
+      //  const esquemaValidacionNumero = Joi.object().keys(
+           // {
+           //     numero: Joi.number().integer().required()
+          //  }
 
-        );
+       // );
         //1er parametro objeto a validar, 2do esquema de validacion
-        const resultado = Joi.validate({//JSON a validar
-            numero: cookies.numero
-        }, esquemaValidacionNumero);
+     //   const resultado = Joi.validate({//JSON a validar
+       //     numero: cookies.numero
+      //  }, esquemaValidacionNumero);
 
-        if (resultado.error) {
-            console.log('resultado: ', resultado)
-        } else {
-            console.log('Numero valido')
-        }
+      // if (resultado.error) {
+       //     console.log('resultado: ', resultado)
+       // } else {
+      //      console.log('Numero valido')
+      //  }
 
 
         //request.cookies//cookies no seguras
         //request.signedCookies//cookies seguras
 
 
-        if (cookies.micookie) {
+       // if (cookies.micookie) {
             //esta cookie que voy hacer abajito se manda desde el servidor, las que se mandaban desde la pagina web eran del cliente
-            const horaFechaServidor = new Date();
-            const minutos = horaFechaServidor.getMinutes();
-            horaFechaServidor.setMinutes(minutos + 1);
+        //    const horaFechaServidor = new Date();
+         //   const minutos = horaFechaServidor.getMinutes();
+        //    horaFechaServidor.setMinutes(minutos + 1);
 
 
-            response.cookie(
-                'Fecha servidor', //nombre (key)
-                new Date().getTime(),//valor(value)
-                {//opciones
-                    expires: horaFechaServidor // una aplicacion de esto, es las sesiones, que expirarian en x tiempo
-                }
-            )
+          //  response.cookie(
+          //      'Fecha servidor', //nombre (key)
+          //      new Date().getTime(),//valor(value)
+          //      {//opciones
+                    //expires: horaFechaServidor // una aplicacion de esto, es las sesiones, que expirarian en x tiempo
+          //      }
+           // )
             //dos tipos de cookies: seguras e inseguras
-            return response.set('Ok')
-        } else {
-            return ':('
-        }
-    }
+           // return response.set('Ok')
+       // } else {
+        //    return ':('
+//    }
 
 
     @Get('/semilla2')
@@ -273,8 +272,6 @@ export class AppController {
             return "error";
         }
 
-
-
         return res.send(
             {
                 nombreUsuario: galleta.nombre,
@@ -283,6 +280,11 @@ export class AppController {
             }
         )
 
+    }
+
+    @Get('/inicio')
+    inicio(@Response() res){
+        return res.render('inicio');
     }
 
 }
@@ -378,4 +380,141 @@ class clase{
 
 //usar let en lugar de var
 //para variables usar const (variable constante)
+//en ts sí es tipado
+function suma(a:number,b:number):number{
+    return a+b;
+}
+
+
+//condicionales en js
+//Truty
+//Falsy
+if(true){//truty
+    console.log('Verdadero')
+}else{
+    console.log('False')
+}
+
+
+if(""){//Falsy // un string vacio es falso
+    console.log('Verdadero ""');
+}else{
+    console.log('False ""');
+}
+
+if("a"){//un string con más de un caracter es verdadero
+    console.log('Verdadero "a"')
+}else{
+    console.log('Falso "a"')
+}
+
+
+if(0){ //falso
+    console.log('Verdadero "0"')
+}else{
+    console.log('Falso "0"')
+}
+
+if("0"){ //true
+    console.log('Verdadero "0"')
+}else{
+    console.log('Falso "0"')
+}
+
+if(-1){//falso
+
+}else{
+
+}
+
+if(1){//verdadero
+
+}else{
+
+}
+
+
+if(undefined){//Falsy
+
+}else{
+
+}
+
+
+if(null){//falsy
+
+}else{
+
+}
+
+//Un objeto JSON vacío es TRUTY
+
+
+//OPERADORES DE ARREGLOS JS
+
+const arreglo=[1,'A',true,null,{},[5,null,false,undefined,function (){return 1;}]]
+
+//una variable en JS se le puede asignar cualquier tipo de variable
+
+//a una variable también se le puede guardar una función
+
+var sumar=function (a,b) {
+    return a+b;
+}
+//si uso CONST no puedo redefenir!!!!!!!!!!!!!!!!!
+
+
+
+const arregloNumeros=[1,2,3,4,5,6,7,8,9]
+
+//1) Imprimir en consola todos los elementos
+const rForEach=arregloNumeros.forEach(function (valorActual/*,indice,arreglo*/) {
+    console.log(`valor: ${valorActual}`);
+    //console.log(`Indice: ${indice}`);
+    //console.log(`Arreglo: ${arreglo}`);
+});
+
+console.log(`Respuesta foreach: ${rForEach}`); //foreach es una funcion que no devuelve nada
+
+//funciones anonimas (=>)
+arregloNumeros.forEach(dato=>{
+    console.log(`Valor actual: ${dato}`)
+})
+
+//2) Sumen 2 a los pares y 1 a los impares
+//mutar o transformar el arreglo:map
+arregloNumeros.map(valor=>{
+    const esPar=valor%2;
+    if(esPar==0){
+        return valor+2;
+    }else{
+        return valor+1;
+    }
+});
+
+
+
+//3) Encontrar si hay el numero 4
+
+const encontrar=arregloNumeros.find(valor=>{//si no encuentra regresa false o undefined.
+    return valor==4;
+})
+//4) Filtrar los números menores a 5
+
+const filtrado=arregloNumeros.filter(valor=>{ //devuelve un nuevo arreglo
+    return valor<5;
+})
+
+//5) Todos los valores positivos
+
+//6) Algun valor es menor que 2
+
+//7) Sumar todos los valores
+
+//8) Restar todos los valores de 100
+
+
+//1.1) sumar 10 a todos
+//1.2) Filtrar a los >15
+//1.3) Si hay algun número mayor a 30
 
