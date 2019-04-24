@@ -200,6 +200,81 @@ export class AppController {
         }
     }
 
+
+    @Get('/semilla2')
+    semilla2(
+        @Request() request,
+        @Response() response
+    ) {
+        console.log(request.cookies);
+        const cookies = request.cookies; // JSON
+
+        const esquemaValidacionNumero = Joi
+            .object()
+            .keys({
+                numero: Joi.number().integer().required()
+            });
+
+        const objetoValidacion = {
+            numero: cookies.numero
+        };
+        const resultado = Joi.validate(objetoValidacion,
+            esquemaValidacionNumero);
+
+        if (resultado.error) {
+            console.log('Resultado: ', resultado);
+        } else {
+            console.log('Numero valido');
+        }
+
+        const cookieSegura = request.signedCookies.fechaServidor;
+        if(cookieSegura){
+            console.log('Cookie segura', cookieSegura);
+        }else{
+            console.log('No es valida esta cookie');
+        }
+
+        if (cookies.micookie) {
+
+            const horaFechaServidor = new Date();
+            const minutos = horaFechaServidor.getMinutes();
+            horaFechaServidor.setMinutes(minutos + 1);
+
+            response.cookie(
+                'fechaServidor',      // NOMBRE (key)
+                new Date().getTime(),  // VALOR  (value)
+                {    // OPCIONES
+                    // expires: horaFechaServidor
+                    signed: true
+                }
+            );
+
+            return response.send('ok');
+        } else {
+            return response.send(':(');
+        }
+
+    }
+
+
+    //Cookie insegura retornando un JSON
+    @Get('/setearNombre')
+        deber(@Response() res){
+            res.cookie(
+
+                'nombreUsuario',  'César'
+
+            );
+            return res.send(
+                {
+                    nombreUsuario:'César',
+
+                    resultado: 2
+                }
+            )
+
+    }
+
 }
 
 

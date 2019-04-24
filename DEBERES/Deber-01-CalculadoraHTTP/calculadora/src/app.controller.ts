@@ -110,7 +110,7 @@ export class AppController {
         }
         
         //return "Resultado de division: "+div;
-        respuesta.set('Resultadodivision:', div);
+        respuesta.set('division', div);
         return respuesta.send({Resultado_division: div});
       }else{
         return respuesta.status(400).send(
