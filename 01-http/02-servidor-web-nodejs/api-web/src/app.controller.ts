@@ -282,11 +282,19 @@ export class AppController {
 
     }
 
-    @Get('/inicio')
+    @Get('inicio')
     inicio(@Response() res){
         return res.render('inicio');
     }
 
+
+    
+   /* @Get('inicio')
+    inicio(
+        @Response() res
+    ) {
+        return res.render('inicio');
+    }*/
 }
 
 
