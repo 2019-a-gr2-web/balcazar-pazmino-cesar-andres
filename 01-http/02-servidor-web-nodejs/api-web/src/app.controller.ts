@@ -208,7 +208,7 @@ export class AppController {
         console.log(request.cookies);
         const cookies = request.cookies; // JSON
 
-        const esquemaValidacionNumero = Joi
+       /* const esquemaValidacionNumero = Joi
             .object()
             .keys({
                 numero: Joi.number().integer().required()
@@ -224,7 +224,7 @@ export class AppController {
             console.log('Resultado: ', resultado);
         } else {
             console.log('Numero valido');
-        }
+        }*/
 
         const cookieSegura = request.signedCookies.fechaServidor;
         if (cookieSegura) {
