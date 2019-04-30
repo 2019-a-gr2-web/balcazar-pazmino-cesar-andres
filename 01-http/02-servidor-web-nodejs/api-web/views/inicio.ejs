@@ -1,6 +1,10 @@
 <!--  //declarar variable // no tipado -->
 <% const nombre='Cesar' %>
 <% const arreglo=['Cesar','Heidy','Odalys','Michelle','Gissela','Gabriela ♥ ♡'];%>
+
+<% const arreglo2=[1,2,3,4,5,6,7,8,9,10];%>
+
+
 <!-- <%= nombre %> -->
 <!-- <h1><%=nombre%></h1>
 <h2><%=nombre%></h2>
@@ -59,3 +63,20 @@
 </body>
 
 </html>
+
+
+<%const objeto= {
+    nombre:'Cesar',
+    apellido:'Balcazar'
+};
+%>
+
+<% arreglo2.forEach((valor) =>{ %>
+<p>Numero: <%=valor%></p>
+<%})%>
+
+<ul>
+    <% arreglo2.forEach((valor) =>{ %>
+    <ol>Numero: <%=valor%></ol>
+    <%})%>
+</ul>
