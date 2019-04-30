@@ -3,9 +3,19 @@ import { AppService } from './app.service';
 import { setupMaster } from 'cluster';
 import { response } from 'express';
 
+import * as Joi from '@hapi/joi';
+
+
 @Controller('/api')
 export class AppController {
-  constructor(private readonly appService: AppService) { }
+  esquemaValidacionNumero: Joi;
+  constructor(private readonly appService: AppService) {
+    this.esquemaValidacionNumero = Joi
+      .object()
+      .keys({
+        numero: Joi.number()/*.integer()*/.required()
+      });
+  }
 
   @Get()
   getHello(): string {
@@ -36,7 +46,21 @@ export class AppController {
     console.log(this.valorCookie);
     if (Number(this.valorCookie) > 0) {
 
-      if (!isNaN(cabecera.numero1) && !isNaN(cabecera.numero2)) {
+      const objetoValidacion1 = {
+        numero: cabecera.numero1
+      };
+      const objetoValidacion2 = {
+        numero: cabecera.numero2
+      };
+
+      const resultado1 = Joi.validate(objetoValidacion1,
+        this.esquemaValidacionNumero);
+
+      const resultado2 = Joi.validate(objetoValidacion2,
+        this.esquemaValidacionNumero);
+
+
+      if (!resultado1.error && !resultado2.error) {
 
         const num1 = Math.round(Number(cabecera.numero1));
         const num2 = Math.round(Number(cabecera.numero2));
@@ -70,7 +94,21 @@ export class AppController {
   @HttpCode(201)
   resta(@Body() cuerpo, @Response() respuesta, /* */ @Request() req) {
     if (this.valorCookie > 0) {
-      if (!isNaN(cuerpo.numero1) && !isNaN(cuerpo.numero2)) {
+      const objetoValidacion1 = {
+        numero: cuerpo.numero1
+      };
+      const objetoValidacion2 = {
+        numero: cuerpo.numero2
+      };
+
+      const resultado1 = Joi.validate(objetoValidacion1,
+        this.esquemaValidacionNumero);
+
+      const resultado2 = Joi.validate(objetoValidacion2,
+        this.esquemaValidacionNumero);
+
+
+      if (!resultado1.error && !resultado2.error) {
         const num1 = Math.round(Number(cuerpo.numero1));
         const num2 = Math.round(Number(cuerpo.numero2));
         const rest = num1 - num2;
@@ -87,6 +125,7 @@ export class AppController {
           });
       }
     } else {
+      console.log(this.valorCookie);
       const cookieSegura = req.signedCookies.puntaje;
       if (cookieSegura) {
         return respuesta.send(this.respuestaFinal);
@@ -111,8 +150,21 @@ export class AppController {
   @HttpCode(202)
   multiplicacion(@Query() query, /**/ @Request() req, @Response() res) {
     if (this.valorCookie > 0) {
+      const objetoValidacion1 = {
+        numero: query.numero1
+      };
+      const objetoValidacion2 = {
+        numero: query.numero2
+      };
 
-      if (!isNaN(query.numero1) && !isNaN(query.numero2)) {
+      const resultado1 = Joi.validate(objetoValidacion1,
+        this.esquemaValidacionNumero);
+
+      const resultado2 = Joi.validate(objetoValidacion2,
+        this.esquemaValidacionNumero);
+
+
+      if (!resultado1.error && !resultado2.error) {
         const num1 = Math.round(Number(query.numero1));
         const num2 = Math.round(Number(query.numero2));
         const mult = num1 * num2;
@@ -155,7 +207,22 @@ export class AppController {
 
     if (this.valorCookie > 0) {
 
-      if (!isNaN(query.numero1) && !isNaN(body.numero2)) {
+      const objetoValidacion1 = {
+        numero: query.numero1
+      };
+      const objetoValidacion2 = {
+        numero: body.numero2
+      };
+
+      const resultado1 = Joi.validate(objetoValidacion1,
+        this.esquemaValidacionNumero);
+
+      const resultado2 = Joi.validate(objetoValidacion2,
+        this.esquemaValidacionNumero);
+
+
+      if (!resultado1.error && !resultado2.error) {
+
         const num1 = Math.round(Number(query.numero1));
         const num2 = Math.round(Number(body.numero2));
         var div: Number = 0;

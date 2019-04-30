@@ -1,6 +1,61 @@
-    
 <!--  //declarar variable // no tipado -->
 <% const nombre='Cesar' %>
-<%= nombre %>
+<% const arreglo=['Cesar','Heidy','Odalys','Michelle','Gissela','Gabriela ♥ ♡'];%>
+<!-- <%= nombre %> -->
+<!-- <h1><%=nombre%></h1>
+<h2><%=nombre%></h2>
+<legend><%=nombre%></legend> -->
+<!DOCTYPE html>
+<html lang="en">
 
-<%const arreglo=[1,2,3,4,5];%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <title>Test Aplicaciones Web</title>
+</head>
+
+<body>
+
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div style="margin: 50px" class="panel panel-success">
+            <div class="panel-heading">Mi nombre es: </div>
+            <div class="panel-body">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <table style="width:100%; border: 1px solid black">
+                        <tr style="border: 1px solid black;background-color: grey">
+                            <th>Nombre</th>
+
+                        </tr>
+
+                        <% for(var i=0; i < arreglo.length; i++) { %>
+                        <tr style="border: 1px solid black">
+                            <td><%= arreglo[i] %></td>
+
+                        </tr>
+                        <% } %>
+                    </table>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
