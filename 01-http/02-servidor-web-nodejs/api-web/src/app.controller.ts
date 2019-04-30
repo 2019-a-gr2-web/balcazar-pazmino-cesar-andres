@@ -2,6 +2,7 @@ import { Controller, Get, Post, HttpCode, Put, Delete, Headers, Query, Param, Bo
 import { AppService } from './app.service';
 //modo javascript
 import * as Joi from '@hapi/joi';
+import {reduce} from "rxjs/operators";
 //modo typescript
 //const Joi = require('@hapi/joi');
 //http:ip:puerto/segmentoInicial/segmentoInicial
@@ -513,16 +514,105 @@ const filtrado=arregloNumeros.filter(valor=>{ //devuelve un nuevo arreglo
     return valor<5;
 })
 
-//5) Todos los valores positivos
+//5) Todos los valores positivos?
+
+
+const arregloNumerosEvery=[1,2,3,4,5,6,7,8,9]
+
+//si TODOS cumplen TRUE caso contrario FALSE, es como AND
+arregloNumerosEvery.every(
+    (valoractual)=>{
+        return valoractual>0;
+    }
+);
+
 
 //6) Algun valor es menor que 2
 
+
+const arregloNumerosSome=[1,2,3,4,5,6,7,8,9]
+arregloNumerosSome.some(//si alguno cumple TRUE, sin ninguno cumple FALSE
+    (valorActual)=>{
+        return valorActual< 2;
+    }
+);
+
+
+
 //7) Sumar todos los valores
+const arregloNumerosSumarTodos=[1,2,3,4,5,6,7,8,9];
+const valorDondeEmpiezaCalculo=0;
+
+arregloNumerosSumarTodos.reduce(
+    (acumulado,actual)=>{
+        return acumulado+=actual;
+    },valorDondeEmpiezaCalculo//desde aqui el acumulado es 0
+);
 
 //8) Restar todos los valores de 100
+
+const arregloNumerosRestarDe=[1,2,3,4,5,6];
+
+const r=arregloNumerosRestarDe.reduce(
+    (acumulado,actual)=>{
+        return acumulado-=actual;
+    },100
+);
+
+console.log(r);
+
+
+//cuando <4  -> +10%+5
+//cuando>=4 ->+15%+4
+
+const arregloEjemplo=[1,2,3,4,5,6,7,8,9];
+
+/*arregloEjemplo.filter(
+    valor=>{
+        return valor<4;
+    }
+).map(
+    valor=>{
+        valor=valor+(valor*0.1)+4;
+    }
+);*/
+
+arregloEjemplo.reduce(
+    (acumulado,actual)=>{
+        if(actual<4){
+            return acumulado+actual*1.1+5;
+        }else{
+            return acumulado+actual*1.15+3;
+        }
+    }
+);
+
+
+
+
+
 
 
 //1.1) sumar 10 a todos
 //1.2) Filtrar a los >15
 //1.3) Si hay algun número mayor a 30
 
+
+const arregloNumerosFin=[1,2,3,4,5,6];
+
+const tof=arregloNumerosFin.map(
+    valor=>{
+        return valor+=10;
+    }
+).filter(
+    valor=>{
+        return valor>15;
+    }
+).some(
+    valor=>{
+        return valor>30;
+    }
+);
+
+
+console.log(tof);
