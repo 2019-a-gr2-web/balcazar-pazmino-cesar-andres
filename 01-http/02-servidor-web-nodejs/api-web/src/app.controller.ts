@@ -157,12 +157,12 @@ export class AppController {
         //primero se crea un esquema de validacion
         //SOLO SE PUEDE VALIDAR OBJETOS JSON
         //es decir por cada tipo de validacion crear un esquema, un esuquema por formulario: cuando se cree, cuando se actualice, cuando se borre
-      //  const esquemaValidacionNumero = Joi.object().keys(
-           // {
-           //     numero: Joi.number().integer().required()
-          //  }
+        //const esquemaValidacionNumero = Joi.object().keys(
+        //    {
+         //       numero: Joi.number().integer().required()
+         //   }
 
-       // );
+        //);
         //1er parametro objeto a validar, 2do esquema de validacion
      //   const resultado = Joi.validate({//JSON a validar
        //     numero: cookies.numero
@@ -205,10 +205,10 @@ export class AppController {
         @Request() request,
         @Response() response
     ) {
-        console.log(request.cookies);
+        //console.log(request.cookies);
         const cookies = request.cookies; // JSON
 
-       /* const esquemaValidacionNumero = Joi
+        const esquemaValidacionNumero = Joi
             .object()
             .keys({
                 numero: Joi.number().integer().required()
@@ -224,7 +224,7 @@ export class AppController {
             console.log('Resultado: ', resultado);
         } else {
             console.log('Numero valido');
-        }*/
+        }
 
         const cookieSegura = request.signedCookies.fechaServidor;
         if (cookieSegura) {
