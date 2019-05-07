@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a0e98f0-7f9e-4369-9dc9-f591713e5a2a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/peliculas/inicio.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,18 +23,21 @@
     <session id="954010238">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.33" value="2" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.open.time.77" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="ejs" value="2" />
+          <entry key="ejs" value="3" />
+          <entry key="ico" value="1" />
           <entry key="json" value="2" />
           <entry key="png" value="1" />
           <entry key="ts" value="8" />
@@ -38,29 +45,29 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="EJS" value="2" />
-          <entry key="Image" value="1" />
+          <entry key="EJS" value="3" />
+          <entry key="Image" value="2" />
           <entry key="JSON" value="2" />
           <entry key="TypeScript" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="TypeScriptServerServiceImpl" value="6" />
+          <entry key="TypeScriptServerServiceImpl" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="ejs" value="494" />
+          <entry key="ejs" value="1337" />
           <entry key="json" value="343" />
-          <entry key="ts" value="9255" />
+          <entry key="ts" value="9740" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="EJS" value="494" />
+          <entry key="EJS" value="1337" />
           <entry key="JSON" value="343" />
-          <entry key="TypeScript" value="9255" />
+          <entry key="TypeScript" value="9740" />
         </counts>
       </usages-collector>
     </session>
@@ -70,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-294">
-              <caret line="595" column="23" lean-forward="true" selection-start-line="595" selection-start-column="23" selection-end-line="595" selection-end-column="23" />
+            <state relative-caret-position="272">
+              <caret line="296" column="27" lean-forward="true" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
               <folding>
                 <element signature="e#0#126#0" expanded="true" />
                 <element signature="e#189#222#0" expanded="true" />
@@ -80,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+            <state relative-caret-position="483">
+              <caret line="79" column="31" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -92,11 +99,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="759">
-              <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+            <state relative-caret-position="184">
+              <caret line="23" column="123" lean-forward="true" selection-start-line="23" selection-start-column="123" selection-end-line="23" selection-end-column="123" />
               <folding>
-                <element signature="e#0#43#0" expanded="true" />
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#345#374#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/peliculas/inicio.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -128,9 +145,10 @@
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/ejemplo.json" />
         <option value="$PROJECT_DIR$/DEBERES/Deber-01-CalculadoraHTTP/calculadora/src/app.controller.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/view/inicio.ejs" />
-        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts" />
-        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs" />
+        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts" />
+        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts" />
+        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/peliculas/inicio.ejs" />
       </list>
     </option>
   </component>
@@ -193,6 +211,23 @@
               <item name="01-http" type="462c0819:PsiDirectoryNode" />
               <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
               <item name="api-web" type="462c0819:PsiDirectoryNode" />
+              <item name="publico" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="balcazar-pazmino-cesar-andres" type="b2602c69:ProjectViewProjectNode" />
+              <item name="balcazar-pazmino-cesar-andres" type="462c0819:PsiDirectoryNode" />
+              <item name="01-http" type="462c0819:PsiDirectoryNode" />
+              <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="api-web" type="462c0819:PsiDirectoryNode" />
+              <item name="publico" type="462c0819:PsiDirectoryNode" />
+              <item name="imagenes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="balcazar-pazmino-cesar-andres" type="b2602c69:ProjectViewProjectNode" />
+              <item name="balcazar-pazmino-cesar-andres" type="462c0819:PsiDirectoryNode" />
+              <item name="01-http" type="462c0819:PsiDirectoryNode" />
+              <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="api-web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -202,6 +237,15 @@
               <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
               <item name="api-web" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="balcazar-pazmino-cesar-andres" type="b2602c69:ProjectViewProjectNode" />
+              <item name="balcazar-pazmino-cesar-andres" type="462c0819:PsiDirectoryNode" />
+              <item name="01-http" type="462c0819:PsiDirectoryNode" />
+              <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="api-web" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="peliculas" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -218,6 +262,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\USRKAP\Documents\GitHub\balcazar-pazmino-cesar-andres\DEBERES\Deber-01-CalculadoraHTTP\calculadora\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\USRKAP\Documents\GitHub\balcazar-pazmino-cesar-andres\01-http\02-servidor-web-nodejs\api-web\publico\imagenes" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -246,12 +295,14 @@
       <workItem from="1555527593332" duration="6949000" />
       <workItem from="1556045900107" duration="6847000" />
       <workItem from="1556133281594" duration="6583000" />
-      <workItem from="1556651469559" duration="5996000" />
+      <workItem from="1556651469559" duration="6082000" />
+      <workItem from="1557232219394" duration="130000" />
+      <workItem from="1557256626459" duration="5828000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32864000" />
+    <option name="totallyTimeSpent" value="38908000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -294,20 +345,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts">
+    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/view/inicio.ejs" />
+    <entry file="file://$PROJECT_DIR$/DEBERES/Deber-01-CalculadoraHTTP/calculadora/src/app.controller.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/view/inicio.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="-2798">
+          <caret line="153" column="29" lean-forward="true" selection-start-line="153" selection-start-column="29" selection-end-line="153" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -323,17 +365,10 @@
     <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.service.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/DEBERES/Deber-01-CalculadoraHTTP/calculadora/src/app.controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2798">
-          <caret line="153" column="29" lean-forward="true" selection-start-line="153" selection-start-column="29" selection-end-line="153" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-294">
-          <caret line="595" column="23" lean-forward="true" selection-start-line="595" selection-start-column="23" selection-end-line="595" selection-end-column="23" />
+        <state relative-caret-position="272">
+          <caret line="296" column="27" lean-forward="true" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
           <folding>
             <element signature="e#0#126#0" expanded="true" />
             <element signature="e#189#222#0" expanded="true" />
@@ -343,8 +378,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+        <state relative-caret-position="483">
+          <caret line="79" column="31" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/publico/imagenes/logomessi.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="23" column="123" lean-forward="true" selection-start-line="23" selection-start-column="123" selection-end-line="23" selection-end-column="123" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#345#374#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/peliculas/inicio.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
         </state>
       </provider>
     </entry>
