@@ -285,10 +285,21 @@ export class AppController {
 
     @Get('inicio')
     inicio(@Response() res){
-        return res.render('inicio');
+        return res.render('inicio',
+            {
+                estaVivo:true
+            }
+            );//aqui se pueden enviar parametros a la vista
     }
 
-
+    @Get('peliculas')
+    peliculas(@Response() res){
+        return res.render('peliculas/inicio',
+            {
+                //aqui se pueden enviar parametros a la vista
+            }
+        );
+    }
     
    /* @Get('inicio')
     inicio(
