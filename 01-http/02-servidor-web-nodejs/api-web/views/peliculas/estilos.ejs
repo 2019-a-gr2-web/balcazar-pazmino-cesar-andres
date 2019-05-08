@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Estilos</title>
+
+    <style>
+            /*.CSS*/
+            /*selector {propiedad1:valor;}*/
+
+            /*Selector de etiqueta*/
+        h1 {
+            color:red;
+            background-color: yellow;
+        }
+
+         p,h2,div {
+            color:green;
+            background-color: black;
+             font-size: 24px;
+             font-weight: 700;
+         }
+
+        /*De ID*/
+        #adios{
+            color: aquamarine;
+            background-color: brown;
+        }
+
+        /*Selector de clase*/
+        .verde{
+            color:cyan;
+            background-color: darkcyan;
+        }
+
+
+        p{
+            color: darkcyan;
+        }
+
+        .azul{
+            color:deepskyblue;
+        }
+
+        .morado{
+            color:purple;
+        }
+
+
+
+        /*Se pueden unir selectores, es el más importante que una clase*/
+            /*cuando sea p y verde*/
+        p.verde{
+            color:navy;
+        }
+    </style>
+</head>
+<body>
+<h1>Hola</h1>
+<h1 id="adios"">Adios</h1>
+<h1 class="verde">Bienvenidos</h1>
+<p>Barcelona</p>
+<div>Liverpool</div>
+<h2>Ajax</h2>
+
+<div id="adios">Adios mi amor :(</div>
+
+<h1 id="adios" class="verde">Quien es el más importante?</h1>
+
+<h3 style="color:white;background-color: black">Adios g</h3>
+
+
+<p>Prueba de que selector gana en orden de definicion</p>
+
+<p class="verde azul morado">Lorem Ipsum</p>
+
+<div class="verde">VERDE 1</div>
+<p class="verde">VERDE 2</p>
+</body>
+</html>

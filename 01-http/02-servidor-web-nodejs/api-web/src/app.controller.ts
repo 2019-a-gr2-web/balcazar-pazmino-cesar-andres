@@ -283,7 +283,7 @@ export class AppController {
 
     }
 
-    @Get('inicio')
+    @Get('inicio') //end point
     inicio(@Response() res){
         return res.render('inicio',
             {
@@ -300,7 +300,17 @@ export class AppController {
             }
         );
     }
-    
+
+    @Get('estilos') //end point
+    estilos(@Response() res){
+        return res.render('peliculas/estilos',
+            {
+
+            }
+        );
+    }
+
+
    /* @Get('inicio')
     inicio(
         @Response() res
