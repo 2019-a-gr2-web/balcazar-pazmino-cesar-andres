@@ -1,40 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>La Cuerda.Net</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        #logocentro {
+
+            margin: 30px;
+            width: 100%;
+        }
+
+        #buscadorcentro {
+            border: 2px;
+            border-style: groove;
+            border-color: gray;
+            margin: 30px;
+            width: 100%;
+            padding: 10px;
+
+        }
+
+        .indicaciones {
+
+            list-style-type: none;
+            /*Para quitar los guiones del li>*/
+
+        }
+
+        legend {
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: black;
+        }
+    </style>
+
 </head>
+
 <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-2">
-                <h1>Logo</h1>
-            </div>
-            <div class="col-sm-7">
-                <h1>Informacion</h1>
-            </div>
-            <div class="col-sm-3">
-                <h1>Buscador</h1>
-            </div>
+<div class="container">
+    <div class="row topnav">
+
+        <div class="col-sm-2">
+            <a class="active" href="#home">Home</a>
+        </div>
+        <div class="col-sm-7">
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="col-sm-3">
+            <button id="bnv">Buscar</button>
+            <input type="text" placeholder="Search..">
         </div>
 
-        <div class="row">
-            <div class="col-lg-4">
-
-            </div>
-            <div class="col-lg-4">
-
-            </div>
-            <div class="col-lg-4">
-                
-            </div>
-        </div>
 
     </div>
-    
+
+    <div class="row">
+        <div class="col-lg-3">
+
+            <legend>Letras y acordes</legend>
+            <ul>
+                <li>abcdefghijklmnopqrstuvwxyz </li>
+                <li>Buscador avanzado</li>
+                <li>Cantos y alabanzas</li>
+                <li>Canciones nuevas</li>
+                <li>Enviar canción</li>
+                <li>Mis favoritos</li>
+            </ul>
+
+            <legend>Recursos</legend>
+            <ul>
+                <li>Curso de guitarra</li>
+                <li>Curso Guitarra Eléctrica</li>
+                <li>Glosario de Acordes</li>
+                <li>Glosario de Ritmos</li>
+                <li>Afinador</li>
+
+            </ul>
+            <legend>Comunidad</legend>
+            <ul>
+                <li>Listado de usuarios</li>
+                <li>Foros de Discusión</li>
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>Google+</li>
+            </ul>
+
+            <legend>Canciones populares</legend>
+            <table>
+                <tr>
+                    <td>Eres Tú</td>
+                </tr>
+                <tr>
+                    <td>Las luces de esta ciudad</td>
+                </tr>
+                <tr>
+                    <td>Calma</td>
+                </tr>
+                <tr>
+                    <td>Un año</td>
+                </tr>
+                <tr>
+                    <td>Que prometiste</td>
+                </tr>
+                <tr>
+                    <td>Cristina</td>
+                </tr>
+                <tr>
+                    <td> Como mirarte</td>
+                </tr>
+                <tr>
+                    <td>Mi historia entre tus dedos</td>
+                </tr>
+                <tr>
+                    <td>No hay nadie más</td>
+                </tr>
+            </table>
+
+
+        </div>
+
+
+
+        <div class="col-lg-6">
+
+            <div class="container">
+                <div id="logocentro">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, nesciunt porro. Nostrum pariatur
+                    numquam commodi vero magni doloremque corrupti dolores, corporis alias ipsa fugiat tempora
+                    praesentium assumenda omnis nobis suscipit.
+                </div>
+
+                <div id="buscadorcentro">
+                    <div class="text-center">
+                        <input id="buscador" type="text" placeholder="Artista o canción">
+                        <button for="buscador">Buscar</button>
+                    </div>
+
+                    <ul class="indicaciones">
+                        <li>» Verifica la ortografía.</li>
+                        <li>» No uses símbolos raros ( #+-"$ etc).</li>
+                        <li>» Aquí no hay canciones en inglés. ¿por qué?</li>
+                        <li>» Consulta el Indice de Artistas aquí.</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="col-lg-3">
+            <legend>Artistas populares</legend>
+            <ol>
+                <li>Soda Stereo</li>
+                <li>Sebastian Yatra</li>
+                <li>Andrés Calamaro</li>
+                <li>Gustavo Cerati</li>
+                <li>Maná</li>
+                <li>Enanitos Verde</li>
+                <li>Sin Bandera</li>
+                <li>Joaquín Sabina</li>
+                <li>Fito Paez</li>
+                <li>Leiva</li>
+            </ol>
+
+            <legend>Videos Musicales</legend>
+            <ul>
+                <li>» Tutoriales</li>
+                <li>» Karaokes</li>
+                <li>» Videos Oficiales</li>
+                <li>» Covers</li>
+
+
+            </ul>
+            <legend>Enlaces</legend>
+            <ol>
+                <li>Diccionario de Acordes</li>
+                <li>Acordes y Letras</li>
+                <li>Acordes correctos</li>
+                <li>RealTab</li>
+                <li>Letras de canciones</li>
+                <li>Guitarra Para Enamorar</li>
+                <li>Mariachis y Serenatas</li>
+                <li>Canciones Traducidas</li>
+            </ol>
+        </div>
+    </div>
+
+</div>
+
 </body>
+
 </html>
