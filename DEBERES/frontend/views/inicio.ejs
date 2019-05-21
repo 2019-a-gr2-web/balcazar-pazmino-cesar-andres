@@ -27,6 +27,7 @@
             margin: 30px;
             width: 100%;
             padding: 10px;
+            border-radius: 25px;
 
         }
 
@@ -41,6 +42,9 @@
             border-bottom-style: solid;
             border-bottom-width: 1px;
             border-bottom-color: black;
+            font-size: 12pt;
+            font-family: arial;
+            font-weight: bold;
         }
 
         #piepag {
@@ -84,18 +88,109 @@
             color: white;
         }
 
-        #videosmusicales {
+        #listassinguion {
             list-style-type: none;
+            padding-left: 5px;
         }
 
         #encabezadopag {
             font-size: 14px;
         }
 
-        a.linkspie{
+        a.linkspie {
             color: black;
             font-size: 12px;
         }
+
+        #cancionespopulares {
+            font-size: 12px;
+            padding-left: 5px;
+            margin-top: 5px;
+
+        }
+
+        .espacio {
+            height: 5px;
+        }
+
+        td {
+
+            height: 5px;
+            padding-left: 1px;
+        }
+
+        flecha.letrasyacordes {
+            color: #A00000;
+        }
+
+        flecha.recursos {
+            color: #600060;
+        }
+
+        flecha.comunidad {
+            color: #2773a2;
+        }
+
+        flecha.vidmus {
+            color: #FF8000;
+        }
+
+        legend.l1 {
+            color: #AA0000;
+            border-bottom-color: #AA0000;
+        }
+
+        legend.l2 {
+            color: #600060;
+            border-bottom-color: #600060;
+        }
+
+        legend.l3 {
+            color: #2773A2;
+            border-bottom-color: #2773A2;
+        }
+
+        legend.l4 {
+            color: #008800;
+            border-bottom-color: #008800;
+        }
+
+        legend.l5 {
+            color: #008800;
+            border-bottom-color: #008800;
+        }
+
+        legend.l6 {
+            color: #ff8000;
+            border-bottom-color: #ff8000;
+        }
+
+        legend.l7 {
+            color: #d6940c;
+            border-bottom-color: #d6940c;
+        }
+
+        #terceracolumna{
+            margin-top: 30px;
+        }
+
+        #primeracolumna{
+            margin-top: 100px;
+        }
+
+        #segundacolumna{
+            margin-top: 80px;
+            border: 25px;
+        }
+
+        a.enlaceespecial{
+            text-align: right;
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+
     </style>
 
 </head>
@@ -136,73 +231,106 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3" id="primeracolumna">
 
-                <legend>Letras y acordes</legend>
-                <ul>
-                    <li>abcdefghijklmnopqrstuvwxyz </li>
-                    <li>Buscador avanzado</li>
-                    <li>Cantos y alabanzas</li>
-                    <li>Canciones nuevas</li>
-                    <li>Enviar canción</li>
-                    <li>Mis favoritos</li>
+                <legend class="l1">Letras y Acordes</legend>
+                <ul id="listassinguion">
+
+                    <li>
+                        <flecha class="letrasyacordes">»</flecha> abcdefghijklmopqrstuvwxyz
+                    </li>
+                    <li>
+                        <flecha class="letrasyacordes">»</flecha> Buscador avanzado
+                    </li>
+                    <li>
+                        <flecha class="letrasyacordes">»</flecha> Cantos y alabanzas
+                    </li>
+                    <li>
+                        <flecha class="letrasyacordes">»</flecha> Canciones nuevas
+                    </li>
+                    <li>
+                        <flecha class="letrasyacordes">»</flecha> Enviar canción
+                    </li>
+                    <li>
+                        <flecha class="letrasyacordes">»</flecha> Mis favoritos
+                    </li>
                 </ul>
 
-                <legend>Recursos</legend>
-                <ul>
-                    <li>Curso de guitarra</li>
-                    <li>Curso Guitarra Eléctrica</li>
-                    <li>Glosario de Acordes</li>
-                    <li>Glosario de Ritmos</li>
-                    <li>Afinador</li>
+                <legend class="l2">Recursos</legend>
+                <ul id="listassinguion">
+                    <li>
+                        <flecha class="recursos">»</flecha> Curso de guitarra
+                    </li>
+                    <li>
+                        <flecha class="recursos">»</flecha> Curso Guitarra Eléctrica
+                    </li>
+                    <li>
+                        <flecha class="recursos">»</flecha> Glosario de Acordes
+                    </li>
+                    <li>
+                        <flecha class="recursos">»</flecha> Glosario de Ritmos
+                    </li>
+                    <li>
+                        <flecha class="recursos">»</flecha> Afinador
+                    </li>
 
                 </ul>
-                <legend>Comunidad</legend>
-                <ul>
-                    <li>Listado de usuarios</li>
-                    <li>Foros de Discusión</li>
-                    <li>Facebook</li>
-                    <li>Twitter</li>
-                    <li>Google+</li>
+                <legend class="l3">Comunidad</legend>
+                <ul id="listassinguion">
+                    <li>
+                        <flecha class="comunidad">»</flecha> Listado de usuarios
+                    </li>
+                    <li>
+                        <flecha class="comunidad">»</flecha> Foros de Discusión
+                    </li>
+                    <li>
+                        <flecha class="comunidad">»</flecha> Facebook
+                    </li>
+                    <li>
+                        <flecha class="comunidad">»</flecha> Twitter
+                    </li>
+                    <li>
+                        <flecha class="comunidad">»</flecha> Google+
+                    </li>
                 </ul>
 
-                <legend>Canciones populares</legend>
-                <table>
-                    <tr>
+                <legend class="l4">Canciones populares</legend>
+                <table id="cancionespopulares">
+                    <tr class="espacio">
                         <td>Eres Tú</td>
                     </tr>
-                    <tr>
+                    <tr class="espacio">
                         <td>Las luces de esta ciudad</td>
                     </tr>
-                    <tr>
+                    <tr class="espacio">
                         <td>Calma</td>
                     </tr>
-                    <tr>
+                    <tr class="espacio">
                         <td>Un año</td>
                     </tr>
-                    <tr>
+                    <tr class="espacio">
                         <td>Que prometiste</td>
                     </tr>
-                    <tr>
+                    <tr class="espacio">
                         <td>Cristina</td>
                     </tr>
-                    <tr>
+                    <tr class="espacio">
                         <td> Como mirarte</td>
                     </tr>
-                    <tr>
+                    <tr class="espacio">
                         <td>Mi historia entre tus dedos</td>
                     </tr>
-                    <tr>
+                    <tr class="espacio">
                         <td>No hay nadie más</td>
                     </tr>
                 </table>
-
+                <a href="#" class="enlaceespecial">[ver más]</a>
 
             </div>
 
 
 
-            <div class="col-lg-6">
+            <div class="col-lg-6" id="segundacolumna">
 
                 <div class="container">
                     <div id="logocentro" class="text-center">
@@ -237,18 +365,15 @@
 
 
 
-            <div class="col-lg-3">
+            <div class="col-lg-3" id="terceracolumna">
 
                 <div class="row">
 
-                    <div class="col-sm-6 text-center">
-
+                    <div class="col-sm-6 text-right">
                         <a href="#">
-                            Instala <br>
-                            Gratis <br>
-                            Nuestra App <br>
-                            (Android y iOS)
+                            <img src="/imagenes/linkapp.png" alt="linkapp">
                         </a>
+
 
                     </div>
                     <div class="col-sm-6">
@@ -257,7 +382,7 @@
 
                 </div>
 
-                <legend>Artistas populares</legend>
+                <legend class="l5">Artistas populares</legend>
                 <ol>
                     <li>Soda Stereo</li>
                     <li>Sebastian Yatra</li>
@@ -270,17 +395,26 @@
                     <li>Fito Paez</li>
                     <li>Leiva</li>
                 </ol>
+                <a href="#" class="enlaceespecial">[ver más]</a>
 
-                <legend>Videos Musicales</legend>
-                <ul id="videosmusicales">
-                    <li>» Tutoriales</li>
-                    <li>» Karaokes</li>
-                    <li>» Videos Oficiales</li>
-                    <li>» Covers</li>
+                <legend class="l6">Videos Musicales</legend>
+                <ul id="listassinguion">
+                    <li>
+                        <flecha class="vidmus">»</flecha> Tutoriales
+                    </li>
+                    <li>
+                        <flecha class="vidmus">»</flecha> Karaokes
+                    </li>
+                    <li>
+                        <flecha class="vidmus">»</flecha> Videos Oficiales
+                    </li>
+                    <li>
+                        <flecha class="vidmus">»</flecha> Covers
+                    </li>
 
 
                 </ul>
-                <legend>Enlaces</legend>
+                <legend class="l7">Enlaces</legend>
                 <ol>
                     <li>Diccionario de Acordes</li>
                     <li>Acordes y Letras</li>
