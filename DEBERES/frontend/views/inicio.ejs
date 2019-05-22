@@ -190,6 +190,16 @@
             font-weight: bold;
         }
 
+        #novedades{
+            color:red;
+            font-size: 8px;
+            vertical-align: top; /*para poner el texto en la cima*/
+
+        }
+
+        autor{
+            font-style: italic;
+        }
 
     </style>
 
@@ -297,31 +307,34 @@
                 <legend class="l4">Canciones populares</legend>
                 <table id="cancionespopulares">
                     <tr class="espacio">
-                        <td>Eres Tú</td>
+                        <td>Eres Tú, <autor>Carla Morrison</autor></td>
                     </tr>
                     <tr class="espacio">
-                        <td>Las luces de esta ciudad</td>
+                        <td>Las luces de esta ciudad, <autor>División Minú</autor></td>
                     </tr>
                     <tr class="espacio">
-                        <td>Calma</td>
+                        <td>Calma, <autor>Pedro Capo</autor></td>
                     </tr>
                     <tr class="espacio">
-                        <td>Un año</td>
+                        <td>Un año, <autor>Sebastian Yatra</autor></td>
                     </tr>
                     <tr class="espacio">
-                        <td>Que prometiste</td>
+                        <td>Que Prometiste, <autor>Pepe Aguilar</autor></td>
                     </tr>
                     <tr class="espacio">
-                        <td>Cristina</td>
+                        <td>Cristina, <autor>Sebastian Yatra</autor></td>
                     </tr>
                     <tr class="espacio">
-                        <td> Como mirarte</td>
+                        <td> Como mirarte, <autor>Sebastian Yatra</autor></td>
                     </tr>
                     <tr class="espacio">
-                        <td>Mi historia entre tus dedos</td>
+                        <td>Mi historia entre tus dedos, <autor>Gianluca</autor></td>
                     </tr>
                     <tr class="espacio">
-                        <td>No hay nadie más</td>
+                        <td>No hay nadie más, <autor>Sebastián Yatra</autor></td>
+                    </tr>
+                    <tr class="espacio">
+                        <td>la Flaca, <autor>Jarabe de Palo</autor></td>
                     </tr>
                 </table>
                 <a href="#" class="enlaceespecial">[ver más]</a>
@@ -397,7 +410,9 @@
                 </ol>
                 <a href="#" class="enlaceespecial">[ver más]</a>
 
-                <legend class="l6">Videos Musicales</legend>
+                <legend class="l6">Videos Musicales <label id="novedades"><strong>¡NUEVO!</strong></label></legend>
+
+
                 <ul id="listassinguion">
                     <li>
                         <flecha class="vidmus">»</flecha> Tutoriales
