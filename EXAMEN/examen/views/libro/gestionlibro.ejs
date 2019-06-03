@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+        #toprow {
+            text-align: right;
+            margin-top: 50px;
+        }
+
+        #nombreuser {
+            
+            border: 1px groove #10292A;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="row" id="toprow">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            
+
+            <form action="/api/inicio/login">
+                <label id="nombreuser"><%=nombreuser%></label>
+                <button class="btn btn-md btn-danger">Salir</button>
+            </form>
+
+        </div>
+        <div class="col-lg-2"></div>
+
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+
+            <div class="col-lg-8 text-center">
+                <form action="/api/libro/gestionlibro/<%= auxidautor %>">
+                    <label for="idbuscar"></label>
+                    <input type="text" class="form-control" placeholder="Buscar.." id="idbuscar" name="titulo">
+                    <button>BUSCAR</button>
+                </form>
+            </div>
+            <div class="col-lg-4 text-center">
+                
+                <br>
+                <form action="/api/libro/crear">
+                    <button>CREAR</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ISBN</th>
+                        <th>Nombre</th>
+                        <th>Páginas</th>
+                        <th>Edición</th>
+                        <th>Fecha Publicación</th>
+                        <th>Editorial</th>
+                        <th>Autor</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% libros.forEach(value=>{ %>
+                    <tr>
+
+                        <td><%= value.isbn %></td>
+                        <td><%= value.nombre %></td>
+                        <td><%= value.numeroPaginas %></td>
+                        <td><%= value.edicion %></td>
+                        <td><%= value.fechaPublicacion %></td>
+                        <td><%= value.nombreEditorial %></td>
+                        <td><%= autor %></td> 
+
+                        <td>
+                            <form action="/api/libro/borrar/<%= value.id %>" method="POST">
+                                <button>Borrar</button>
+                            </form>
+                        </td>
+                        
+
+                    </tr>
+                    <% });  %>
+
+                </tbody>
+            </table>
+
+
+
+
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+</body>
+
+</html>
