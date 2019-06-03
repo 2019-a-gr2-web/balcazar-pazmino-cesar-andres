@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        #toprow {
+            text-align: right;
+            margin-top: 50px;
+        }
+
+        #nombreuser {
+            
+            border: 1px groove #10292A;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="row" id="toprow">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            
+
+            <form action="/api/inicio/login">
+                <label id="nombreuser"><%= nombreuser %></label>
+                <button class="btn btn-md btn-danger">Salir</button>
+            </form>
+
+        </div>
+        <div class="col-lg-2"></div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form action="/api/libro/crearlibro/<%= idaut %>"
+                method="POST"
+            >
+
+                <label for="idisbn"></label>
+                <input type="number" class="form-control" id="idisbn" placeholder="ISBN" name="isbn">
+                <br>
+                <label for="idnombre"></label>
+                <input type="text" class="form-control" id="idnombre" placeholder="Titulo" name="nombre">
+                <br>
+                <label for="idpaginas"></label>
+                <input type="number" class="form-control" id="idpaginas" name="numeroPaginas" placeholder="Numero de paginas">
+                <br>
+                <label for="idedicion"></label>
+                <input type="number" class="form-control" id="idedicion" placeholder="Edicion" name="edicion">
+                <br>
+                <label for="idfecha"></label>
+                <input type="date" class="form-control" id="idfecha" placeholder="Fecha publicacion" name="fechaPublicacion">
+                <br>
+                <label for="ideditorial"></label>
+                <input type="text" class="form-control" id="ideditorial" placeholder="Editorial" name="nombreEditorial">
+                <br>
+                <label for="idautorf"></label>
+                <input type="number" id="idautorf" value="<%= idaut %>" name="autorId" hidden>
+                <div id="btncrear" class="text-center">
+
+                    
+                    <button type="submit">CREAR</button>
+                    <button type="button"><a href="/api/libro/gestionlibro/<%= idaut %>">Cancelar</a></button>
+                </div>
+                
+
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</body>
+
+</html>
