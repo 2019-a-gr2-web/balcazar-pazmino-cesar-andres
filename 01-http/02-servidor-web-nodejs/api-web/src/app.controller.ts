@@ -406,234 +406,234 @@ class clase{
      var casado=false//boolean
      var hijos=null//null
      var alas=undefined//undefined*/
-
-
-//usar let en lugar de var
-//para variables usar const (variable constante)
-//en ts sí es tipado
-function suma(a:number,b:number):number{
-    return a+b;
-}
-
-
-//condicionales en js
-//Truty
-//Falsy
-if(true){//truty
-    console.log('Verdadero')
-}else{
-    console.log('False')
-}
-
-
-if(""){//Falsy // un string vacio es falso
-    console.log('Verdadero ""');
-}else{
-    console.log('False ""');
-}
-
-if("a"){//un string con más de un caracter es verdadero
-    console.log('Verdadero "a"')
-}else{
-    console.log('Falso "a"')
-}
-
-
-if(0){ //falso
-    console.log('Verdadero "0"')
-}else{
-    console.log('Falso "0"')
-}
-
-if("0"){ //true
-    console.log('Verdadero "0"')
-}else{
-    console.log('Falso "0"')
-}
-
-if(-1){//falso
-
-}else{
-
-}
-
-if(1){//verdadero
-
-}else{
-
-}
-
-
-if(undefined){//Falsy
-
-}else{
-
-}
-
-
-if(null){//falsy
-
-}else{
-
-}
-
-//Un objeto JSON vacío es TRUTY
-
-
-//OPERADORES DE ARREGLOS JS
-
-const arreglo=[1,'A',true,null,{},[5,null,false,undefined,function (){return 1;}]]
-
-//una variable en JS se le puede asignar cualquier tipo de variable
-
-//a una variable también se le puede guardar una función
-
-var sumar=function (a,b) {
-    return a+b;
-}
-//si uso CONST no puedo redefenir!!!!!!!!!!!!!!!!!
-
-
-
-const arregloNumeros=[1,2,3,4,5,6,7,8,9]
-
-//1) Imprimir en consola todos los elementos
-const rForEach=arregloNumeros.forEach(function (valorActual/*,indice,arreglo*/) {
-    console.log(`valor: ${valorActual}`);
-    //console.log(`Indice: ${indice}`);
-    //console.log(`Arreglo: ${arreglo}`);
-});
-
-console.log(`Respuesta foreach: ${rForEach}`); //foreach es una funcion que no devuelve nada
-
-//funciones anonimas (=>)
-arregloNumeros.forEach(dato=>{
-    console.log(`Valor actual: ${dato}`)
-})
-
-//2) Sumen 2 a los pares y 1 a los impares
-//mutar o transformar el arreglo:map
-arregloNumeros.map(valor=>{
-    const esPar=valor%2;
-    if(esPar==0){
-        return valor+2;
-    }else{
-        return valor+1;
-    }
-});
-
-
-
-//3) Encontrar si hay el numero 4
-
-const encontrar=arregloNumeros.find(valor=>{//si no encuentra regresa false o undefined.
-    return valor==4;
-})
-//4) Filtrar los números menores a 5
-
-const filtrado=arregloNumeros.filter(valor=>{ //devuelve un nuevo arreglo
-    return valor<5;
-})
-
-//5) Todos los valores positivos?
-
-
-const arregloNumerosEvery=[1,2,3,4,5,6,7,8,9]
-
-//si TODOS cumplen TRUE caso contrario FALSE, es como AND
-arregloNumerosEvery.every(
-    (valoractual)=>{
-        return valoractual>0;
-    }
-);
-
-
-//6) Algun valor es menor que 2
-
-
-const arregloNumerosSome=[1,2,3,4,5,6,7,8,9]
-arregloNumerosSome.some(//si alguno cumple TRUE, sin ninguno cumple FALSE
-    (valorActual)=>{
-        return valorActual< 2;
-    }
-);
-
-
-
-//7) Sumar todos los valores
-const arregloNumerosSumarTodos=[1,2,3,4,5,6,7,8,9];
-const valorDondeEmpiezaCalculo=0;
-
-arregloNumerosSumarTodos.reduce(
-    (acumulado,actual)=>{
-        return acumulado+=actual;
-    },valorDondeEmpiezaCalculo//desde aqui el acumulado es 0
-);
-
-//8) Restar todos los valores de 100
-
-const arregloNumerosRestarDe=[1,2,3,4,5,6];
-
-const r=arregloNumerosRestarDe.reduce(
-    (acumulado,actual)=>{
-        return acumulado-=actual;
-    },100
-);
-
-console.log(r);
-
-
-//cuando <4  -> +10%+5
-//cuando>=4 ->+15%+4
-
-const arregloEjemplo=[1,2,3,4,5,6,7,8,9];
-
-/*arregloEjemplo.filter(
-    valor=>{
-        return valor<4;
-    }
-).map(
-    valor=>{
-        valor=valor+(valor*0.1)+4;
-    }
-);*/
-
-arregloEjemplo.reduce(
-    (acumulado,actual)=>{
-        if(actual<4){
-            return acumulado+actual*1.1+5;
-        }else{
-            return acumulado+actual*1.15+3;
-        }
-    }
-);
-
-
-
-
-
-
-
-//1.1) sumar 10 a todos
-//1.2) Filtrar a los >15
-//1.3) Si hay algun número mayor a 30
-
-
-const arregloNumerosFin=[1,2,3,4,5,6];
-
-const tof=arregloNumerosFin.map(
-    valor=>{
-        return valor+=10;
-    }
-).filter(
-    valor=>{
-        return valor>15;
-    }
-).some(
-    valor=>{
-        return valor>30;
-    }
-);
-
-
-console.log(tof);
+//
+//
+// //usar let en lugar de var
+// //para variables usar const (variable constante)
+// //en ts sí es tipado
+// function suma(a:number,b:number):number{
+//     return a+b;
+// }
+//
+//
+// //condicionales en js
+// //Truty
+// //Falsy
+// if(true){//truty
+//     console.log('Verdadero')
+// }else{
+//     console.log('False')
+// }
+//
+//
+// if(""){//Falsy // un string vacio es falso
+//     console.log('Verdadero ""');
+// }else{
+//     console.log('False ""');
+// }
+//
+// if("a"){//un string con más de un caracter es verdadero
+//     console.log('Verdadero "a"')
+// }else{
+//     console.log('Falso "a"')
+// }
+//
+//
+// if(0){ //falso
+//     console.log('Verdadero "0"')
+// }else{
+//     console.log('Falso "0"')
+// }
+//
+// if("0"){ //true
+//     console.log('Verdadero "0"')
+// }else{
+//     console.log('Falso "0"')
+// }
+//
+// if(-1){//falso
+//
+// }else{
+//
+// }
+//
+// if(1){//verdadero
+//
+// }else{
+//
+// }
+//
+//
+// if(undefined){//Falsy
+//
+// }else{
+//
+// }
+//
+//
+// if(null){//falsy
+//
+// }else{
+//
+// }
+//
+// //Un objeto JSON vacío es TRUTY
+//
+//
+// //OPERADORES DE ARREGLOS JS
+//
+// const arreglo=[1,'A',true,null,{},[5,null,false,undefined,function (){return 1;}]]
+//
+// //una variable en JS se le puede asignar cualquier tipo de variable
+//
+// //a una variable también se le puede guardar una función
+//
+// var sumar=function (a,b) {
+//     return a+b;
+// }
+// //si uso CONST no puedo redefenir!!!!!!!!!!!!!!!!!
+//
+//
+//
+// const arregloNumeros=[1,2,3,4,5,6,7,8,9]
+//
+// //1) Imprimir en consola todos los elementos
+// const rForEach=arregloNumeros.forEach(function (valorActual/*,indice,arreglo*/) {
+//     console.log(`valor: ${valorActual}`);
+//     //console.log(`Indice: ${indice}`);
+//     //console.log(`Arreglo: ${arreglo}`);
+// });
+//
+// console.log(`Respuesta foreach: ${rForEach}`); //foreach es una funcion que no devuelve nada
+//
+// //funciones anonimas (=>)
+// arregloNumeros.forEach(dato=>{
+//     console.log(`Valor actual: ${dato}`)
+// })
+//
+// //2) Sumen 2 a los pares y 1 a los impares
+// //mutar o transformar el arreglo:map
+// arregloNumeros.map(valor=>{
+//     const esPar=valor%2;
+//     if(esPar==0){
+//         return valor+2;
+//     }else{
+//         return valor+1;
+//     }
+// });
+//
+//
+//
+// //3) Encontrar si hay el numero 4
+//
+// const encontrar=arregloNumeros.find(valor=>{//si no encuentra regresa false o undefined.
+//     return valor==4;
+// })
+// //4) Filtrar los números menores a 5
+//
+// const filtrado=arregloNumeros.filter(valor=>{ //devuelve un nuevo arreglo
+//     return valor<5;
+// })
+//
+// //5) Todos los valores positivos?
+//
+//
+// const arregloNumerosEvery=[1,2,3,4,5,6,7,8,9]
+//
+// //si TODOS cumplen TRUE caso contrario FALSE, es como AND
+// arregloNumerosEvery.every(
+//     (valoractual)=>{
+//         return valoractual>0;
+//     }
+// );
+//
+//
+// //6) Algun valor es menor que 2
+//
+//
+// const arregloNumerosSome=[1,2,3,4,5,6,7,8,9]
+// arregloNumerosSome.some(//si alguno cumple TRUE, sin ninguno cumple FALSE
+//     (valorActual)=>{
+//         return valorActual< 2;
+//     }
+// );
+//
+//
+//
+// //7) Sumar todos los valores
+// const arregloNumerosSumarTodos=[1,2,3,4,5,6,7,8,9];
+// const valorDondeEmpiezaCalculo=0;
+//
+// arregloNumerosSumarTodos.reduce(
+//     (acumulado,actual)=>{
+//         return acumulado+=actual;
+//     },valorDondeEmpiezaCalculo//desde aqui el acumulado es 0
+// );
+//
+// //8) Restar todos los valores de 100
+//
+// const arregloNumerosRestarDe=[1,2,3,4,5,6];
+//
+// const r=arregloNumerosRestarDe.reduce(
+//     (acumulado,actual)=>{
+//         return acumulado-=actual;
+//     },100
+// );
+//
+// console.log(r);
+//
+//
+// //cuando <4  -> +10%+5
+// //cuando>=4 ->+15%+4
+//
+// const arregloEjemplo=[1,2,3,4,5,6,7,8,9];
+//
+// /*arregloEjemplo.filter(
+//     valor=>{
+//         return valor<4;
+//     }
+// ).map(
+//     valor=>{
+//         valor=valor+(valor*0.1)+4;
+//     }
+// );*/
+//
+// arregloEjemplo.reduce(
+//     (acumulado,actual)=>{
+//         if(actual<4){
+//             return acumulado+actual*1.1+5;
+//         }else{
+//             return acumulado+actual*1.15+3;
+//         }
+//     }
+// );
+//
+//
+//
+//
+//
+//
+//
+// //1.1) sumar 10 a todos
+// //1.2) Filtrar a los >15
+// //1.3) Si hay algun número mayor a 30
+//
+//
+// const arregloNumerosFin=[1,2,3,4,5,6];
+//
+// const tof=arregloNumerosFin.map(
+//     valor=>{
+//         return valor+=10;
+//     }
+// ).filter(
+//     valor=>{
+//         return valor>15;
+//     }
+// ).some(
+//     valor=>{
+//         return valor>30;
+//     }
+// );
+//
+//
+// console.log(tof);
