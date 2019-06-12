@@ -1,6 +1,8 @@
 import {Injectable} from "@nestjs/common";
 import {Trago} from "./interfaces/trago";
-
+import {TragosEntity} from "./tragos.entity";
+import {Repository} from "typeorm";
+import {InjectRepository} from "@nestjs/typeorm";
 
 @Injectable()
 export class TragosService {
@@ -8,7 +10,8 @@ export class TragosService {
     recnum=1;// para gestionar los id de los tragos
 
 
-    constructor(){
+    constructor( @InjectRepository(TragosEntity)
+                 private readonly _tragosRepositorio: Repository<TragosEntity>,){// ese objeto tiene todos los metodos de SQL
         const traguito:Trago={
             nombre:'Pilsener',
             gradoAlcohol:4.3,
@@ -17,6 +20,19 @@ export class TragosService {
             tipo:'Cerveza'
         };
         this.crear(traguito)
+
+
+        const objetoEntidad=this._tragosRepositorio.create(traguito);
+        //this._tragosRepositorio.insert(objetoEntidad);
+        this._tragosRepositorio.save(objetoEntidad).then(
+            (datos)=>{console.log('dato creado',datos)}
+        ).catch(
+            (error)=>{
+                console.error('Error:',error)
+            }
+        )
+
+
     }
     crear(nuevoTrago:Trago):Trago{
         nuevoTrago.id=this.recnum;
