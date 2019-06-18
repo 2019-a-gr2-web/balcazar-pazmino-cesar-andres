@@ -22,24 +22,54 @@ export class TragosService {
         this.crear(traguito)
 
 
-        const objetoEntidad=this._tragosRepositorio.create(traguito);
+        //const objetoEntidad=this._tragosRepositorio.create(traguito); //solo crea nueva instancia de la entidad, no la guarda en la bd
         //this._tragosRepositorio.insert(objetoEntidad);
-        this._tragosRepositorio.save(objetoEntidad).then(
+
+
+        //ESTA ES LA FORMA ASINCRONA, PARA HACER SINCRONA SE DEBE HACER LO QUE SE HIZO EN EL CONTROLADOR
+        //linea 1
+        /*this._tragosRepositorio.save(objetoEntidad).then(  //promesa
+            //linea 2
             (datos)=>{console.log('dato creado',datos)}
+
+
+            //linea 3
         ).catch(
             (error)=>{
                 console.error('Error:',error)
             }
-        )
+        );*/
+        //linea 4
+
 
 
     }
-    crear(nuevoTrago:Trago):Trago{
+
+
+
+
+    //con bd, buscar
+    buscar(parametroBusqueda?):Promise<Trago[]>{
+        return this._tragosRepositorio.find(parametroBusqueda);
+    }
+
+    //con bd, con promesas hechas sincronas
+    crear(nuevoTrago:Trago):Promise<Trago>{
+        const objetoEntidad=this._tragosRepositorio
+                                    .create(nuevoTrago);
+
+        return this._tragosRepositorio.save(objetoEntidad); //esto ya es una promesa
+    }
+
+
+
+    //con arreglos
+    /*crear(nuevoTrago:Trago):Trago{
         nuevoTrago.id=this.recnum;
         this.recnum++;
         this.bdTragos.push(nuevoTrago);
         return nuevoTrago;
-    }
+    }*/
 
     buscarPorId(id:number):Trago{
         return this.bdTragos.find(
