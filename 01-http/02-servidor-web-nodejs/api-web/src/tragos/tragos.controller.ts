@@ -12,9 +12,9 @@ export class TragosController{
     }
 
     @Get('lista')
-    listarTragos(@Res() res){
+    async listarTragos(@Res() res){
 
-        const arregloTragos=this._tragossService.bdTragos;
+        const arregloTragos=await this._tragossService.buscar();
         res.render('tragos/vista-tragos',
             {
                 arregloTragos:arregloTragos
@@ -34,7 +34,7 @@ export class TragosController{
 
     //aqui se mandan parametros de cuerpo
     @Post('crear')
-    crearTragosPost(
+    async crearTragosPost(
         @Body()trago:Trago,//todos los campos en una
         @Res() res
         // @Body('nombre')nombre:string,
@@ -42,9 +42,6 @@ export class TragosController{
         // @Body('tipo') tipo:string,
         // @Body('gradosAlcohol') gradoAlcohol:number,
         // @Body('fechaCaducidad') fechaCaducidad:Date,
-
-
-
     ){
         //TOCA HACER ESTO CON ESTOS 3 CAMPOS PORQUE DEVUELVE UNDEFINED
         trago.gradoAlcohol=Number(trago.gradoAlcohol);
@@ -52,14 +49,16 @@ export class TragosController{
         trago.fechaCaducidad=new Date(trago.fechaCaducidad);
         console.log(trago);
 
-        this._tragossService.crear(trago);
-        res.redirect('/api/dieguito/lista')
-        //console.log('Trago: ', trago, typeof trago);
-        // console.log('Nombre: ', nombre, typeof nombre);
-        // console.log('Tipo: ', tipo, typeof tipo);
-        // console.log('GradosAlcohol: ', gradoAlcohol, typeof gradoAlcohol);
-        // console.log('FechaCaducidad: ', fechaCaducidad, typeof fechaCaducidad);
-        // console.log('Precio: ', precio, typeof precio);
+
+        try{
+            const respuestaCrear= await this._tragossService.crear(trago); //promesa
+            res.redirect('/api/dieguito/lista')
+        }catch(e){
+            console.error(e);
+            res.status(500);
+            res.send({mensaje:'Error',codigo:500});
+        }
+
 
     }
 
