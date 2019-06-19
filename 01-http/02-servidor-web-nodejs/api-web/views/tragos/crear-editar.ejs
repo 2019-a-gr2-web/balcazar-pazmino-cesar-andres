@@ -1,3 +1,8 @@
+<%- include('../componentes/menu/menu')%>
+<% const existeMnensaje = mensaje %>
+<% if(existeMnensaje){ %>
+    <p>ERROR EN FORMULARIO! <%= mensaje%></p>
+<% } %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,7 +24,7 @@
         method="post"
 >
 
-        <!--method="post"-->
+    <!--method="post"-->
 
 
     <label for="nombreId">Nombre: </label>
@@ -50,7 +55,6 @@
     <input type="date" id="fechaCID" name="fechaCaducidad">
 
 
-
     <br>
     <label for="precioID">Precio: </label>
     <input type="number" name="precio" min="0" step="any" id="precioID">
@@ -62,7 +66,9 @@
     <!--<button type="submit">Submit</button>-->
 
     <br>
-    <a href="/api/dieguito/lista"><button type="button">Cancelar</button></a>
+    <a href="/api/dieguito/lista">
+        <button type="button">Cancelar</button>
+    </a>
 
     <!--Por defecto es submit-->
     <button>Enviar información</button>
@@ -71,3 +77,5 @@
 
 </body>
 </html>
+
+<%- include('../componentes/footer/footer')%>
