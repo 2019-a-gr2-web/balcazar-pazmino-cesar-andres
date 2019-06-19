@@ -19,7 +19,7 @@ export class TragosService {
             precio:1.75,
             tipo:'Cerveza'
         };
-        this.crear(traguito)
+        //this.crear(traguito)
 
 
         //const objetoEntidad=this._tragosRepositorio.create(traguito); //solo crea nueva instancia de la entidad, no la guarda en la bd

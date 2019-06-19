@@ -6,24 +6,24 @@ import {OneToMany} from "typeorm";
 import {FiestaEntity} from "../fiesta/fiesta.entity";
 
 @Entity('bd_trago') //aqui se pasa el nombre tabla (se puede)
-export class TragosEntity{
+export class TragosEntity {
 
     @PrimaryGeneratedColumn()
-    id:number;
+    id: number;
 
     @Column({
-        name:'nombre_trago', //nombre que quiero que se ponga directamente en la bd
-        type:'varchar',
-        length:70
+        name: 'nombre_trago', //nombre que quiero que se ponga directamente en la bd
+        type: 'varchar',
+        length: 70
     })
-    nombre:string;//este es el nombre del codigo, pero en la bd se muestra como esta arriba
+    nombre: string;//este es el nombre del codigo, pero en la bd se muestra como esta arriba
 
     @Column({
         type: 'varchar',
         length: 10,
         name: 'tipo_trago',
     })
-    tipo: 'Ron'|'Vodka'|'Whiskey'|'Tequila'|'Puntas'|'Cerveza';
+    tipo: 'Ron' | 'Vodka' | 'Whiskey' | 'Tequila' | 'Puntas' | 'Cerveza';
 
     @Column({
         type: 'int',
@@ -34,26 +34,28 @@ export class TragosEntity{
     @Column({
         type: 'date',
         name: 'fecha_caducidad',
+        default: '2019-12-12'
     })
     fechaCaducidad: Date;
 
     @Column({
         type: 'decimal',
         precision: 10,
-        scale:2,
+        scale: 2,
         name: 'precio',
+        nullable: true
     })
     precio: number;
 
 
     @ManyToOne(
-        type=>DistribuidorEntity,
-        distribuidor=>distribuidor.tragos
+        type => DistribuidorEntity,
+        distribuidor => distribuidor.tragos
     )
     distribuidorFK: DistribuidorEntity;
 
 
-    @OneToMany( type => FiestaEntity, fiesta => fiesta)
+    @OneToMany(type => FiestaEntity, fiesta => fiesta)
     fiestas: FiestaEntity[]
 
 }
