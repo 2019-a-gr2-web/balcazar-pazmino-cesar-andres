@@ -1,15 +1,17 @@
-import {Body, Controller, Delete, Get, Post, Query, Res} from "@nestjs/common";
-import {TragosService} from "./tragos.service";
-import {Trago} from "./interfaces/trago";
-import {TragosCreateDto} from "./dto/tragos.create.dto";
-import {validate} from "class-validator";
+import { Body, Controller, Delete, Get, Post, Query, Res, Param } from "@nestjs/common";
+import { TragosService } from "./tragos.service";
+import { Trago } from "./interfaces/trago";
+import { TragosCreateDto } from "./dto/tragos.create.dto";
+import { validate } from "class-validator";
 
 
 @Controller('/api/dieguito')
 export class TragosController {
-
+    estoyEditando: boolean = false;
+    idtragoEditando: number = null;
     //inyección de dependencias
     constructor(private readonly _tragossService: TragosService) { //ahora tengo todos los metodos del tragoservice
+
 
     }
 
@@ -23,19 +25,47 @@ export class TragosController {
             });
     }
 
-    @Get('crear')
-    crearTragos(@Res() res, @Query('mensaje') mensaje:string) {
+    @Get('crearvista')
+    async crearTragos(@Res() res, @Query('mensaje') mensaje: string, @Query('id') id?: number) {
 
 
-        res.render('tragos/crear-editar',
-            {mensaje});
+
+        //let bdaux:Trago[]=[];
+        let editando;
+        var tragoAux: Trago = {
+            nombre: "",
+            tipo: "Cerveza",
+            gradoAlcohol: null,
+            fechaCaducidad: null,
+            precio: null
+        };
+        if (id) {
+            this.estoyEditando = true;
+            this.idtragoEditando = Number(id);
+            editando = this.estoyEditando;
+
+
+            let bdaux = await this._tragossService.buscarporId(id);
+
+           
+            tragoAux = bdaux[0];
+
+            res.render('tragos/crear-editar',
+                { mensaje, tragoAux, editando });
+        } else {
+            this.estoyEditando = false;
+            editando = this.estoyEditando;
+            res.render('tragos/crear-editar',
+                { mensaje, tragoAux, editando });
+        }
+
     }
 
 
     //aqui se mandan parametros de cuerpo
     @Post('crear')
     async crearTragosPost(
-        @Body()trago: Trago,//todos los campos en una
+        @Body() trago: Trago,//todos los campos en una
         @Res() res
         // @Body('nombre')nombre:string,
         // @Body('precio') precio:number,
@@ -67,28 +97,36 @@ export class TragosController {
                 console.error(errores);
                 //res.status(400); //porque el usuario manda los datos
                 //res.send({mensaje: 'Error', codigo: 400});
-                res.redirect('/api/dieguito/crear?mensaje=hay_un_error');
+                res.redirect('/api/dieguito/crearvista?mensaje=hay_un_error');
             } else {
-                const respuestaCrear = await this._tragossService.crear(trago); //promesa
+                if (!this.estoyEditando) {
+                    const respuestaCrear = await this._tragossService.crear(trago); //promesa
+                } else {
+                    const respuestaEditar = await this._tragossService.editardelaBD(this.idtragoEditando, trago);
+                    this.idtragoEditando = null;
+                }
+
                 res.redirect('/api/dieguito/lista')
             }
 
         } catch (e) {
             console.error(e);
             res.status(500);
-            res.send({mensaje: 'Error', codigo: 500});
+            res.send({ mensaje: 'Error', codigo: 500 });
         }
 
 
     }
 
     @Post('borrar')
-    borrarTraguito(
+    async borrarTraguito(
         @Body('id') id: number,
         @Res() res
     ) {
 
-        this._tragossService.eliminar(id);
+        //this._tragossService.eliminar(id);
+        console.log(id);
+        await this._tragossService.eliminarDeLaBD(Number(id));
         res.redirect('/api/dieguito/lista')
 
     }
