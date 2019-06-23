@@ -1,81 +1,86 @@
 <%- include('../componentes/menu/menu')%>
 <% const existeMnensaje = mensaje %>
 <% if(existeMnensaje){ %>
-    <p>ERROR EN FORMULARIO! <%= mensaje%></p>
+<p>ERROR EN FORMULARIO! <%= mensaje%></p>
 <% } %>
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-<h1>Formulario de Creación</h1>
-<p>Crear un nuevo trago.</p>
+    <h1>Formulario de Creación</h1>
+    <p>Crear un nuevo trago.</p>
 
-<!--Ayuda a crear un request HTTP, es la unica forma de crear un resquest-->
-<!--Por defecto en el formulario el metodo HTTP es el GET-->
-<!--Con el metodo GET no se puede enviar parametros de cuerpo-->
-<form
-        action="/api/dieguito/crear"
-        method="post"
->
+    <!--Ayuda a crear un request HTTP, es la unica forma de crear un resquest-->
+    <!--Por defecto en el formulario el metodo HTTP es el GET-->
+    <!--Con el metodo GET no se puede enviar parametros de cuerpo-->
+    <form action="/api/dieguito/crear" method="post">
 
-    <!--method="post"-->
+        <!--method="post"-->
 
 
-    <label for="nombreId">Nombre: </label>
-    <!--No olvidar el name-->
-    <input id="nombreId" name="nombre" type="text">
+        <label for="nombreId">Nombre: </label>
+        <!--No olvidar el name-->
+        <input id="nombreId" name="nombre" type="text" value="<%=tragoAux.nombre%>">
 
-    <br>
-    <label for="tipoId">Tipo de trago</label>
-    <select name="tipo" id="tipoId">
-        <option value="Ron">Ron</option>
-        <option value="Vodka">Vodka</option>
-        <option value="Tequila">Tequila</option>
-        <option value="Whiskey" selected>Whiskey</option>
-        <option value="Puntas">Puntas</option>
-        <option value="Cerveza">Cerveza</option>
+        <br>
+        <label for="tipoId">Tipo de trago</label>
+        <select name="tipo" id="tipoId">
+            <option value="Ron">Ron</option>
+            <option value="Vodka">Vodka</option>
+            <option value="Tequila">Tequila</option>
+            <option value="Whiskey" selected>Whiskey</option>
+            <option value="Puntas">Puntas</option>
+            <option value="Cerveza">Cerveza</option>
 
-    </select>
+        </select>
 
-    <br>
-    <label for="gradosId">Grados Alcohol: </label>
+        <br>
+        <label for="gradosId">Grados Alcohol: </label>
 
-    <!--EL NAME ES EL MISM0 QUE ESTÁ EN EL CONTROLLER, QUE DEBE RECIBIR!!!!-->
-    <input type="number" name="gradoAlcohol" min="0" max="100" step="any" id="gradosId">
-
-
-    <br>
-    <label for="fechaCID">Fecha caducidad: </label>
-    <input type="date" id="fechaCID" name="fechaCaducidad">
+        <!--EL NAME ES EL MISM0 QUE ESTÁ EN EL CONTROLLER, QUE DEBE RECIBIR!!!!-->
+        <input type="number" name="gradoAlcohol" min="0" max="100" step="any" id="gradosId"
+            value="<%=tragoAux.gradoAlcohol%>">
 
 
-    <br>
-    <label for="precioID">Precio: </label>
-    <input type="number" name="precio" min="0" step="any" id="precioID">
-    <!--Se hace una peticion HTTP a google.com-->
-    <!--Existen 3 tipos de botones en el formulario-->
+        <br>
+        <label for="fechaCID">Fecha caducidad: </label>
+        <input type="date" id="fechaCID" name="fechaCaducidad" value="<%=tragoAux.fechaCaducidad%>">
 
-    <!--<button type="button">Button</button>-->
-    <!--<button type="reset">Reset</button>-->
-    <!--<button type="submit">Submit</button>-->
 
-    <br>
-    <a href="/api/dieguito/lista">
-        <button type="button">Cancelar</button>
-    </a>
+        <br>
+        <label for="precioID">Precio: </label>
+        <input type="number" name="precio" min="0" step="any" id="precioID" value="<%=tragoAux.precio%>">
+        <!--Se hace una peticion HTTP a google.com-->
+        <!--Existen 3 tipos de botones en el formulario-->
 
-    <!--Por defecto es submit-->
-    <button>Enviar información</button>
-</form>
+        <!--<button type="button">Button</button>-->
+        <!--<button type="reset">Reset</button>-->
+        <!--<button type="submit">Submit</button>-->
+
+        <br>
+        <a href="/api/dieguito/lista">
+            <button type="button">Cancelar</button>
+        </a>
+
+        <!--Por defecto es submit-->
+        <% if(!editando){ %>
+        <button>Enviar información</button>
+        <% }else{ %>
+        <button>Editar</button>
+        <% } %>
+    </form>
 
 
 </body>
+
 </html>
 
 <%- include('../componentes/footer/footer')%>
