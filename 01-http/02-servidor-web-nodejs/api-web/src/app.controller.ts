@@ -1,15 +1,28 @@
-import { Controller, Get, Post, HttpCode, Put, Delete, Headers, Query, Param, Body, Request, Response } from '@nestjs/common';
-import { AppService } from './app.service';
+import {
+    Controller,
+    Get,
+    Post,
+    HttpCode,
+    Put,
+    Delete,
+    Headers,
+    Query,
+    Param,
+    Body,
+    Request,
+    Response,
+    Session, Res
+} from '@nestjs/common';
+import {AppService} from './app.service';
 //modo javascript
 import * as Joi from '@hapi/joi';
 import {reduce} from "rxjs/operators";
+
 //modo typescript
 //const Joi = require('@hapi/joi');
 //http:ip:puerto/segmentoInicial/segmentoInicial
 //@Controller(Segemento)
 //el segmento Accion se pone en cada método
-
-
 
 
 @Controller('/api')
@@ -125,7 +138,7 @@ export class AppController {
             const cantidad = Number(parametrosCuerpo.cantidad);
             if (cantidad > 1) {
                 response.set('Premio', 'Guatita');
-                return response.send({ mensaje: 'Registro Creado' });
+                return response.send({mensaje: 'Registro Creado'});
 
                 // return 'Registro actualizado';
             } else {
@@ -143,61 +156,61 @@ export class AppController {
     }
 
 
-  //  @Get('/semilla')
+    //  @Get('/semilla')
     //semilla(@Request() res, /*esta cookie en cambio es para la cooki que se envia desde el servidor*/@Response() response) {
     //    console.log(res.cookies);
-        //return 'ok'
+    //return 'ok'
 
-        //para usar cookies usar : #npm install cookie-parser
+    //para usar cookies usar : #npm install cookie-parser
 
-        //luego usar cookie parser en el main.ts
+    //luego usar cookie parser en el main.ts
 
-        //const noHayCookie=!res.cookies;
-      //  const cookies = res.cookies; //devuelve un JSON
+    //const noHayCookie=!res.cookies;
+    //  const cookies = res.cookies; //devuelve un JSON
 
-        //primero se crea un esquema de validacion
-        //SOLO SE PUEDE VALIDAR OBJETOS JSON
-        //es decir por cada tipo de validacion crear un esquema, un esuquema por formulario: cuando se cree, cuando se actualice, cuando se borre
-        //const esquemaValidacionNumero = Joi.object().keys(
-        //    {
-         //       numero: Joi.number().integer().required()
-         //   }
+    //primero se crea un esquema de validacion
+    //SOLO SE PUEDE VALIDAR OBJETOS JSON
+    //es decir por cada tipo de validacion crear un esquema, un esuquema por formulario: cuando se cree, cuando se actualice, cuando se borre
+    //const esquemaValidacionNumero = Joi.object().keys(
+    //    {
+    //       numero: Joi.number().integer().required()
+    //   }
 
-        //);
-        //1er parametro objeto a validar, 2do esquema de validacion
-     //   const resultado = Joi.validate({//JSON a validar
-       //     numero: cookies.numero
-      //  }, esquemaValidacionNumero);
+    //);
+    //1er parametro objeto a validar, 2do esquema de validacion
+    //   const resultado = Joi.validate({//JSON a validar
+    //     numero: cookies.numero
+    //  }, esquemaValidacionNumero);
 
-      // if (resultado.error) {
-       //     console.log('resultado: ', resultado)
-       // } else {
-      //      console.log('Numero valido')
-      //  }
-
-
-        //request.cookies//cookies no seguras
-        //request.signedCookies//cookies seguras
+    // if (resultado.error) {
+    //     console.log('resultado: ', resultado)
+    // } else {
+    //      console.log('Numero valido')
+    //  }
 
 
-       // if (cookies.micookie) {
-            //esta cookie que voy hacer abajito se manda desde el servidor, las que se mandaban desde la pagina web eran del cliente
-        //    const horaFechaServidor = new Date();
-         //   const minutos = horaFechaServidor.getMinutes();
-        //    horaFechaServidor.setMinutes(minutos + 1);
+    //request.cookies//cookies no seguras
+    //request.signedCookies//cookies seguras
 
 
-          //  response.cookie(
-          //      'Fecha servidor', //nombre (key)
-          //      new Date().getTime(),//valor(value)
-          //      {//opciones
-                    //expires: horaFechaServidor // una aplicacion de esto, es las sesiones, que expirarian en x tiempo
-          //      }
-           // )
-            //dos tipos de cookies: seguras e inseguras
-           // return response.set('Ok')
-       // } else {
-        //    return ':('
+    // if (cookies.micookie) {
+    //esta cookie que voy hacer abajito se manda desde el servidor, las que se mandaban desde la pagina web eran del cliente
+    //    const horaFechaServidor = new Date();
+    //   const minutos = horaFechaServidor.getMinutes();
+    //    horaFechaServidor.setMinutes(minutos + 1);
+
+
+    //  response.cookie(
+    //      'Fecha servidor', //nombre (key)
+    //      new Date().getTime(),//valor(value)
+    //      {//opciones
+    //expires: horaFechaServidor // una aplicacion de esto, es las sesiones, que expirarian en x tiempo
+    //      }
+    // )
+    //dos tipos de cookies: seguras e inseguras
+    // return response.set('Ok')
+    // } else {
+    //    return ':('
 //    }
 
 
@@ -265,9 +278,7 @@ export class AppController {
 
         if (galleta.nombre) {
             res.cookie(
-
                 'nombreUsuario', galleta.nombre
-
             );
         } else {
             return "error";
@@ -284,16 +295,16 @@ export class AppController {
     }
 
     @Get('inicio') //end point
-    inicio(@Response() res){
+    inicio(@Response() res) {
         return res.render('inicio',
             {
-                estaVivo:true
+                estaVivo: true
             }
-            );//aqui se pueden enviar parametros a la vista
+        );//aqui se pueden enviar parametros a la vista
     }
 
     @Get('peliculas')
-    peliculas(@Response() res){
+    peliculas(@Response() res) {
         return res.render('peliculas/inicio',
             {
                 //aqui se pueden enviar parametros a la vista
@@ -302,27 +313,68 @@ export class AppController {
     }
 
     @Get('estilos') //end point
-    estilos(@Response() res){
+    estilos(@Response() res) {
         return res.render('peliculas/estilos',
-            {
-
-            }
+            {}
         );
     }
 
 
-   /* @Get('inicio')
-    inicio(
-        @Response() res
+    //PARA MANEJAR LAS SESIONE
+    @Get('session')
+    sesion(
+        @Query('nombre') nombre,
+        @Session() session
     ) {
-        return res.render('inicio');
-    }*/
+
+
+        session.autenticado = true;
+        session.nombreUsuario = nombre;
+        console.log(session);
+
+        return 'ok';
+    }
+
+    @Get('login')
+    loginVista(@Response() res) {
+        res.render('login', {});
+    }
+
+    @Post('login')
+    login(@Res() res, @Body() usuario, @Session() session) {
+        if (usuario.username == 'Cesar' && usuario.password == '12345678') {
+            session.username = usuario.username;
+            session.password = usuario.password;
+            res.redirect('/api/protegida');
+        } else {
+            res.status(400);
+            res.send({mensaje: 'Error login', error: 400});
+        }
+    }
+
+    @Get('protegida')
+    protegida(
+        @Session() session,
+        @Res() res
+    ) {
+        if (session.username) { //si es que existe la sesion significa que estamos logeados
+            res.render('protegida', {nombre: session.username});
+        } else {
+            res.redirect('login');
+        }
+    }
+
+
+    @Get('logout')
+    logout(
+        @Res() res,
+        @Session() session,
+    ) {
+        session.username = undefined;
+        session.destroy();
+        res.redirect('/api/login');
+    }
 }
-
-
-
-
-
 
 
 /*
@@ -361,7 +413,6 @@ const json=[
 ];*/
 
 
-
 /*
 @nombreDecoradorClase //antes de instaciar clases, metodos, atributos. Un decorador es una función, Se ejecuta antes de crearse. DECORADPR->Funcion
 class clase{
@@ -384,7 +435,6 @@ class clase{
 }*/
 
 
-
 //JSON es la notacion de objetos en JS, un archivo json no puede estar vacio, es usado porque es ligero y facil de entender
 //abosultamente todas las llaves deben estar entre comillas DOBLES, estandar JSON (Java Script Object Notation)
 //todos los string en JSON tienen comillas dobles
@@ -397,7 +447,6 @@ class clase{
  *
  *
  */
-
 
 
 /*var nombre:string='Cesar' //String
