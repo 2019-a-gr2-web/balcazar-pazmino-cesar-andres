@@ -374,6 +374,9 @@ export class AppController {
         session.destroy();
         res.redirect('/api/login');
     }
+
+
+
 }
 
 
