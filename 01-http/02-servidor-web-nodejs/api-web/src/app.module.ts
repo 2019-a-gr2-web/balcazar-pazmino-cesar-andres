@@ -8,15 +8,16 @@ import {FiestaEntity} from "./fiesta/fiesta.entity";
 import {DistribuidorEntity} from "./distribuidor/distribuidor.entity";
 import {DistribuidorModule} from "./distribuidor/distribuidor.module";
 import {FiestaModule} from "./fiesta/fiesta.module";
+import {ChatModule} from "./chat/chat.module";
 
 //para usar el ORM
 
 @Module({
     imports: [
-        TragosModule,
+       /* TragosModule,
         DistribuidorModule,
-        FiestaModule,
-        TypeOrmModule.forRoot({
+        FiestaModule,*/
+       /* TypeOrmModule.forRoot({
             name: 'default',//nombre de cadena de conexión por defecto del TypeORM
             type: 'mysql',
             host: 'localhost',
@@ -33,7 +34,8 @@ import {FiestaModule} from "./fiesta/fiesta.module";
 
             //dropSchema: true //borra todos los datos
 
-        }),
+        }),*/
+       ChatModule
     ],//aqui van los modulos
     controllers: [AppController],
     providers: [AppService],
