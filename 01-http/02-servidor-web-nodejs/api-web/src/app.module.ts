@@ -14,10 +14,10 @@ import {ChatModule} from "./chat/chat.module";
 
 @Module({
     imports: [
-       /* TragosModule,
+       TragosModule,
         DistribuidorModule,
-        FiestaModule,*/
-       /* TypeOrmModule.forRoot({
+        FiestaModule,
+        TypeOrmModule.forRoot({
             name: 'default',//nombre de cadena de conexión por defecto del TypeORM
             type: 'mysql',
             host: 'localhost',
@@ -34,8 +34,16 @@ import {ChatModule} from "./chat/chat.module";
 
             //dropSchema: true //borra todos los datos
 
-        }),*/
+        }),
+
+
+      //el chat
        ChatModule
+        /***/
+
+
+
+
     ],//aqui van los modulos
     controllers: [AppController],
     providers: [AppService],
