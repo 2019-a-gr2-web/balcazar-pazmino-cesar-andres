@@ -11,12 +11,13 @@ import {
     Body,
     Request,
     Response,
-    Session, Res
+    Session, Res, Render, UseInterceptors, UploadedFile
 } from '@nestjs/common';
 import {AppService} from './app.service';
 //modo javascript
 import * as Joi from '@hapi/joi';
 import {reduce} from "rxjs/operators";
+import {FileInterceptor, FilesInterceptor} from "@nestjs/platform-express";
 
 //modo typescript
 //const Joi = require('@hapi/joi');
@@ -375,6 +376,56 @@ export class AppController {
         res.redirect('/api/login');
     }
 
+
+    //PARA SUBIR ARCHIVOS, CUALQUIER METODO QUE NO SEA EL GET (POR DEFECTO POST)
+    //*******************************************ARCHIVOS
+
+    @Get('subirarchivo/:idTrago')
+    @Render('archivo') //otra forma de renderizar directamente sin el res.render()
+    subirArchivo(
+        @Param('idTrago') idTrago
+    ){
+
+        return {
+            idTrago:idTrago
+        }
+    }
+
+
+    @Post('subirarchivo/:idTrago')
+    @UseInterceptors(
+        FileInterceptor(
+            'imagen',
+            {
+                dest: __dirname+ '/../archivos'  //dinrname es una vairable global de node ejs
+            }
+
+        )
+
+    )
+    subirArchivosPost(
+
+        @Param('idTrago') idTrago,
+        @UploadedFile() archivo
+    ) {
+        console.log(archivo);
+        return {mensaje:'Ok '};
+    }
+
+
+    @Get('descargararchivo/:idTrago')
+    descargarArchivo(
+        @Res() res,
+        @Param('idTrago') idTrago
+    ){
+// originalname: 'Lighthouse.jpg'
+// path:'C:\\Users\\USRKAP\\Documents\\GitHub\\balcazar-pazmino-cesar-andres\\01-http\\02-servidor-web-nodejs\\api-web\\archivos\\f1dabacd1a0d90bdf9051e053df7da70',
+
+        const originalName='Lighthouse.jpg';
+        const path='C:\\Users\\USRKAP\\Documents\\GitHub\\balcazar-pazmino-cesar-andres\\01-http\\02-servidor-web-nodejs\\api-web\\archivos\\f1dabacd1a0d90bdf9051e053df7da70';
+        res.download(path,originalName);
+
+    }
 
 
 }
