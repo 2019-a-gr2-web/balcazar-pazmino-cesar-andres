@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <style>
+        #titulo {
+            cursor: pointer;
+        }
+
+        /* #contenedorchat {
+        background-color: #10292A;
+        color: white;
+    }*/
+    </style>
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="text-center">
+                <h1 id="titulo">ADIVINA EL NÚMERO!</h1>
+                <label for="idnumeroadivinar">Ingresa tu número:</label>
+                <input type="text" id="idnumeroadivinar">
+                <button id="buttonsubmitt">Agregar</button>
+                <h3 id="aquivaelnumero"></h3>
+            </div>
+
+            <div class="container" id="contenedorchat">
+                <h5>CHAT:</h5>
+                <!--aqui iriatodo lo que voy a poner-->
+
+            </div>
+
+            <div class="container">
+
+
+                <label for="chat-text">Texto:</label>
+                <input type="text" id="chat-text" class="form-control">
+                <button id="btnsend" class="btn btn-info" onclick="enviarMensaje()">Enviar mensaje!</button>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <script>
+        let valorAdivinar;
+        const titulo = document.getElementById("titulo");
+        const texto = document.getElementById("chat-text");
+        const buttonSubmitValor = document.getElementById("buttonsubmitt");
+
+        buttonSubmitValor.onclick = () => {
+
+            const inputValor = document.getElementById("idnumeroadivinar");
+            const h3numero = document.getElementById("aquivaelnumero");
+            const primermensaje = "Tienes que adivinar mi número chch!";
+
+            valorAdivinar = inputValor.value;
+
+            h3numero.innerHTML = "El valor que tienen que adivinar es: " + valorAdivinar;
+
+            enviarMensaje(primermensaje);
+        }
+
+        function enviarMensaje(aux) {
+            let textoChat;
+
+            if (aux) {
+                textoChat = aux;
+            } else {
+                textoChat = texto.value;
+            }
+
+            const etiquetaChat = "p";
+            const idContenedor = 'contenedorchat';
+
+            const parrafo = document.createElement(etiquetaChat);
+            let contenidoHTML;
+
+            contenidoHTML = `
+                                    <div class="alert alert-primary text-right" role="alert">
+                                        ${textoChat}
+                                    </div>
+                                `;
+
+            parrafo.innerHTML = contenidoHTML;
+
+            aniadirEtiqueta(idContenedor, parrafo);
+            peticionAdivinar(textoChat);
+
+
+
+        }
+
+
+        function aniadirEtiqueta(idEtiqueta, elementoHTML) {
+            const etiqueta = document.getElementById(idEtiqueta);
+            etiqueta.appendChild(elementoHTML);
+        }
+
+    </script>
+
+
+    <!--cualquier ejercicio https://github.com/nestjs/nest/tree/master/sample-->
+    <script src="socket.io.js"></script>
+    <!--<script src="/websockets/socket.io.js"></script>                  path absoluto-->
+
+    <script>
+        const url = 'http://192.168.100.6:3001/websocket';
+        const socket = io(url);
+        console.log('ya mismo nos conectamos :v');
+        socket.on(
+            'connect', //nombre del evento
+            () => {
+                console.log('estamos conectados!'); //toda la logica siempre que el servidor se baja y sube se implementa aqui
+                /*socket.disconnect();
+                setTimeout(
+                    ()=>{
+                        socket.connect();
+                    },3000
+                )*/
+            }
+        );
+
+
+        socket.on(
+            'disconnect', //nombre del evento, hay muchos eventos como el reconnect, etc
+            () => {
+                console.log('no estamos conectados alv =(!'); //toda la logica siempre que el servidor se baja y sube se implementa aqui
+            }
+        );
+
+        socket.on(
+            'adivinar', //nombre del evento, hay muchos eventos como el reconnect, etc
+            (data) => {
+
+                const idContenedor = document.getElementById("contenedorchat");
+                const nombreContenedor = 'contenedor-chat';
+                const etiqueta = 'p';
+
+                const parrafo = document.createElement(etiqueta);
+
+
+                const contenidoHTML = `
+                                        <div class="alert alert-secondary text-left" role="alert">
+                                            ${data.nombre}
+                                        </div>
+                                    `;
+
+
+                parrafo.innerHTML = contenidoHTML;
+
+
+                aniadirEtiqueta("contenedorchat", parrafo);
+
+                if (Number(data.nombre) == Number(valorAdivinar)) {
+
+                    enviarMensaje("Adivinado!");
+
+                }
+
+                if (data.nombre == "Adivinado!") {
+                    const contenidoHTMLVictory = `
+                                        <div class="alert alert-warning text-center" role="alert">
+                                            Adivinado!
+                                        </div>
+                                    `;
+                    parrafo.innerHTML = contenidoHTMLVictory;
+                    aniadirEtiqueta("contenedorchat", parrafo);
+                }
+            }
+        );
+
+        //CLIENTE
+        function peticionAdivinar(texto) {
+            const nombreMetodo = 'adivinaNumero';
+            const datos = {
+                nombre: texto
+            };
+            socket.emit(
+                nombreMetodo,
+                datos,
+                (respuesta) => {//callback
+                    console.log(respuesta);
+                }
+            )
+        }
+
+
+
+
+
+        var input = document.getElementById("chat-text");
+        input.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("btnsend").click();
+            }
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
