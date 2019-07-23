@@ -1,134 +1,74 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <style>
         #titulo {
             cursor: pointer;
         }
 
-       /* #contenedorchat {
+        /* #contenedorchat {
             background-color: #10292A;
             color: white;
         }*/
     </style>
 
 </head>
+
 <body>
 
 
-<h1 id="titulo">CHAT EPN</h1>
+    <h1 id="titulo">CHAT EPN</h1>
 
-<p class="par">PRIMERO</p>
-<p class="par" onmouseenter="clickParrafo()">SEGUNDO</p>
+    <p class="par">PRIMERO</p>
+    <p class="par" onmouseenter="clickParrafo()">SEGUNDO</p>
 
-<div id="contenedorchat">
-    <h5>CHAT: </h5>
-    <!--aqui iriatodo lo que voy a poner-->
+    <div id="contenedorchat">
+        <h5>CHAT: </h5>
+        <!--aqui iriatodo lo que voy a poner-->
 
-</div>
+    </div>
 
-<label for="chat-text">Texto:</label>
-<input type="text" id="chat-text" class="form-control">
-<button class="btn btn-info" onclick="enviarMensaje()">Aniadir chat</button>
+    <label for="chat-text">Texto:</label>
+    <input type="text" id="chat-text" class="form-control">
+    <button class="btn btn-info" onclick="enviarMensaje()">Aniadir chat</button>
 
-<script>
-    const titulo = document.getElementById("titulo");
-    const texto = document.getElementById("chat-text");
+    <script>
+        const titulo = document.getElementById("titulo");
+        const texto = document.getElementById("chat-text");
 
-    titulo.style.backgroundColor = 'gray';
+        titulo.style.backgroundColor = 'gray';
 
-    titulo.onclick = () => {
-        console.log('Diste clic al título mmv ;(');
+        titulo.onclick = () => {
+            console.log('Diste clic al título mmv ;(');
 
-    };
+        };
 
-    function clickParrafo() {
-        //alert('cuidado!!!');
-    }
+        function clickParrafo() {
+            //alert('cuidado!!!');
+        }
 
-    function enviarMensaje() {
-        const textoChat = texto.value;
+        function enviarMensaje() {
+            const textoChat = texto.value;
 
-        const etiquetaChat = "p";
-        const idContenedor = 'contenedorchat';
+            const etiquetaChat = "p";
+            const idContenedor = 'contenedorchat';
 
-        const parrafo = document.createElement(etiquetaChat);
-        const contenidoHTML = `
+            const parrafo = document.createElement(etiquetaChat);
+            const contenidoHTML = `
         <div class="alert alert-primary text-right" role="alert">
            ${textoChat}
-        </div>
-        `;
-        //.innerText=textoChat;
-        parrafo.innerHTML = contenidoHTML;
-
-
-        aniadirEtiqueta("contenedorchat", parrafo);
-        peticionHolaMundo(textoChat);
-
-    }
-
-
-    function aniadirEtiqueta(idEtiqueta, elementoHTML) {
-        const etiqueta = document.getElementById(idEtiqueta);
-        etiqueta.appendChild(elementoHTML);
-    }
-</script>
-
-
-<!--cualquier ejercicio https://github.com/nestjs/nest/tree/master/sample-->
-<script src="socket.io.js"></script>
-<!--<script src="/websockets/socket.io.js"></script>                  path absoluto-->
-
-<script>
-    const url = 'http://localhost:3001/websockets';
-    const socket = io(url);
-    console.log('ya mismo nos conectamos :v');
-    socket.on(
-        'connect', //nombre del evento
-        () => {
-            console.log('estamos conectados!'); //toda la logica siempre que el servidor se baja y sube se implementa aqui
-            /*socket.disconnect();
-            setTimeout(
-                ()=>{
-                    socket.connect();
-                },3000
-            )*/
-        }
-    );
-
-
-    socket.on(
-        'disconnect', //nombre del evento, hay muchos eventos como el reconnect, etc
-        () => {
-            console.log('no estamos conectados alv =(!'); //toda la logica siempre que el servidor se baja y sube se implementa aqui
-        }
-    );
-
-    socket.on(
-        'saludaron', //nombre del evento, hay muchos eventos como el reconnect, etc
-        (data) => {
-            console.log('nos saludaron'); //toda la logica siempre que el servidor se baja y sube se implementa aqui
-
-            const idContenedor = document.getElementById("contenedorchat");
-            const nombreContenedor='contenedor-chat';
-            const etiqueta='p';
-
-            const parrafo=document.createElement(etiqueta);
-
-            const contenidoHTML = `
-        <div class="alert alert-secondary text-left" role="alert">
-           ${data.nombre}
         </div>
         `;
             //.innerText=textoChat;
@@ -136,27 +76,90 @@
 
 
             aniadirEtiqueta("contenedorchat", parrafo);
-            //peticionHolaMundo(data.nombre);
+            peticionHolaMundo(textoChat);
+
         }
-    );
 
 
-    //CLIENTE
-    function peticionHolaMundo(texto) {
-        const nombreMetodo = 'holaMundo';
-        const datos = {
-            nombre: texto
-        };
-        socket.emit(
-            nombreMetodo,
-            datos,
-            (respuesta) => {//callback
-                console.log(respuesta);
+        function aniadirEtiqueta(idEtiqueta, elementoHTML) {
+            const etiqueta = document.getElementById(idEtiqueta);
+            etiqueta.appendChild(elementoHTML);
+        }
+    </script>
+
+
+    <!--cualquier ejercicio https://github.com/nestjs/nest/tree/master/sample-->
+    <script src="socket.io.js"></script>
+    <!--<script src="/websockets/socket.io.js"></script>                  path absoluto-->
+
+    <script>
+        const url = 'http://localhost:3001/websockets';
+        const socket = io(url);
+        console.log('ya mismo nos conectamos :v');
+        socket.on(
+            'connect', //nombre del evento
+            () => {
+                console.log('estamos conectados!'); //toda la logica siempre que el servidor se baja y sube se implementa aqui
+                /*socket.disconnect();
+                setTimeout(
+                    ()=>{
+                        socket.connect();
+                    },3000
+                )*/
             }
-        )
-    }
-</script>
+        );
+
+
+        socket.on(
+            'disconnect', //nombre del evento, hay muchos eventos como el reconnect, etc
+            () => {
+                console.log('no estamos conectados alv =(!'); //toda la logica siempre que el servidor se baja y sube se implementa aqui
+            }
+        );
+
+        socket.on(
+            'saludaron', //nombre del evento, hay muchos eventos como el reconnect, etc
+            (data) => {
+                console.log('nos saludaron'); //toda la logica siempre que el servidor se baja y sube se implementa aqui
+
+                const idContenedor = document.getElementById("contenedorchat");
+                const nombreContenedor = 'contenedor-chat';
+                const etiqueta = 'p';
+
+                const parrafo = document.createElement(etiqueta);
+
+                const contenidoHTML = `
+        <div class="alert alert-secondary text-left" role="alert">
+           ${data.nombre}
+        </div>
+        `;
+                //.innerText=textoChat;
+                parrafo.innerHTML = contenidoHTML;
+
+
+                aniadirEtiqueta("contenedorchat", parrafo);
+                //peticionHolaMundo(data.nombre);
+            }
+        );
+
+
+        //CLIENTE
+        function peticionHolaMundo(texto) {
+            const nombreMetodo = 'holaMundo';
+            const datos = {
+                nombre: texto
+            };
+            socket.emit(
+                nombreMetodo,
+                datos,
+                (respuesta) => {//callback
+                    console.log(respuesta);
+                }
+            )
+        }
+    </script>
 
 
 </body>
+
 </html>
